@@ -1,0 +1,69 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+    android:layoutDirection="rtl"
+    android:textDirection="rtl"
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content">
+    <LinearLayout
+        android:layout_alignParentTop="true"
+        android:paddingHorizontal="@dimen/_20sdp"
+        android:background="@drawable/primary_background"
+        android:orientation="vertical"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+        <LinearLayout
+            android:orientation="horizontal"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+            <LinearLayout
+                android:layout_weight="65"
+                android:orientation="horizontal"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content">
+                <LinearLayout
+                    android:orientation="vertical"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content">
+                    <TextView
+                        android:paddingTop="@dimen/_10sdp"
+                        android:textSize="@dimen/largeFont"
+                        android:textColor="@color/white"
+                        android:fontFamily="@font/vazir"
+                        android:text="سلام ، محمد جواد حجتی 👋"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"/>
+                    <TextView
+                        android:paddingTop="@dimen/_3sdp"
+                        android:paddingBottom="@dimen/_25sdp"
+                        android:textSize="@dimen/smallFont"
+                        android:textColor="@color/white"
+                        android:fontFamily="@font/vazir"
+                        android:text="شما یک دانش آموز هستید"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"/>
+                </LinearLayout>
+            </LinearLayout>
+            <LinearLayout
+                android:layout_weight="30"
+                android:orientation="horizontal"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content">
+                <!--more for Left side-->
+            </LinearLayout>
+        </LinearLayout>
+        <EditText
+            android:textColorHint="@color/disable"
+            android:drawablePadding="@dimen/_5sdp"
+            android:drawableRight="@drawable/ic_baseline_search_24"
+            android:layout_marginBottom="@dimen/_20sdp"
+            android:paddingVertical="@dimen/_8sdp"
+            android:paddingHorizontal="@dimen/_10sdp"
+            android:textSize="@dimen/smallFont"
+            android:fontFamily="@font/vazir"
+            android:hint="جست و جو در پیام ها"
+            android:background="@drawable/edi_style"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"/>
+    </LinearLayout>
+</RelativeLayout>

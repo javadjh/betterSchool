@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+    android:background="@color/light"
+    android:layoutDirection="rtl"
+    android:textDirection="rtl"
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".MainActivity">
+    <include layout="@layout/main_header"
+        android:id="@+id/header"/>
+    <androidx.core.widget.NestedScrollView
+        android:layout_above="@id/bottomMenu"
+        android:layout_width="match_parent"
+        android:layout_below="@id/header"
+        android:layout_height="wrap_content">
+        <LinearLayout
+            android:orientation="vertical"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+            <LinearLayout
+                android:layout_marginTop="@dimen/_5sdp"
+                android:gravity="center"
+                android:layout_gravity="center"
+                android:orientation="horizontal"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+                <View
+                    android:background="@color/black"
+                    android:layout_weight="25"
+                    android:layout_width="0dp"
+                    android:layout_height="1dp"/>
+                <TextView
+                    android:textSize="@dimen/largeFont"
+                    android:gravity="center"
+                    android:layout_gravity="center"
+                    android:fontFamily="@font/vazir"
+                    android:layout_weight="30"
+                    android:text="دسترسی های شما"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"/>
+                <View
+                    android:background="@color/black"
+                    android:layout_weight="25"
+                    android:layout_width="0dp"
+                    android:layout_height="1dp"/>
+            </LinearLayout>
+            <androidx.recyclerview.widget.RecyclerView
+                android:layoutDirection="rtl"
+                android:overScrollMode="never"
+                android:textDirection="rtl"
+                app:layoutManager="androidx.recyclerview.widget.GridLayoutManager"
+                app:spanCount="2"
+                android:id="@+id/recyOptions"
+                tools:listitem="@layout/item_user_option"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"/>
+        </LinearLayout>
+    </androidx.core.widget.NestedScrollView>
+    <include layout="@layout/bottom_menu"
+        android:layout_alignParentBottom="true"
+        android:id="@+id/bottomMenu"
+        android:layout_height="wrap_content"
+        android:layout_width="match_parent"/>
+</RelativeLayout>

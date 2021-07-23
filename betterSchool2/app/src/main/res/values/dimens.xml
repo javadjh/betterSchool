@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <dimen name="radius">@dimen/_18sdp</dimen>
+    <dimen name="softRadius">@dimen/_10sdp</dimen>
+    <dimen name="largeFont">18sp</dimen>
+    <dimen name="xlargeFont">21sp</dimen>
+    <dimen name="smallFont">12sp</dimen>
+    <dimen name="elevation">@dimen/_5sdp</dimen>
+</resources>

@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:background="@color/primary"
+    android:layoutDirection="rtl"
+    android:textDirection="rtl"
+    android:layout_height="?actionBarSize">
+    <ImageView
+        android:layout_alignParentLeft="true"
+        android:id="@+id/backImage"
+        android:padding="@dimen/_5sdp"
+        android:rotation="180"
+        android:src="@drawable/ic_baseline_arrow_back_24"
+        android:layout_width="@dimen/_40sdp"
+        android:layout_height="match_parent"
+        app:tint="@color/white" />
+    <TextView
+        android:id="@+id/titleBack"
+        android:textSize="@dimen/largeFont"
+        android:textColor="@color/white"
+        android:layout_centerInParent="true"
+        android:fontFamily="@font/vazir"
+        android:text="فهرست دانش آموزان"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"/>
+</RelativeLayout>
