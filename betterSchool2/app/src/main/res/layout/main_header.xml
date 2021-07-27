@@ -1,14 +1,19 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout
+<androidx.cardview.widget.CardView app:cardCornerRadius="@dimen/radius"
     android:layoutDirection="rtl"
+    app:cardElevation="@dimen/elevation"
+    app:cardBackgroundColor="@color/primary"
     android:textDirection="rtl"
     xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
-    android:layout_height="wrap_content">
+    android:layout_marginTop="-25dp"
+
+    android:layout_height="wrap_content"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
     <LinearLayout
+        android:paddingTop="25dp"
         android:layout_alignParentTop="true"
         android:paddingHorizontal="@dimen/_20sdp"
-        android:background="@drawable/primary_background"
         android:orientation="vertical"
         android:layout_width="match_parent"
         android:layout_height="wrap_content">
@@ -53,6 +58,8 @@
             </LinearLayout>
         </LinearLayout>
         <EditText
+            android:focusable="false"
+            android:focusableInTouchMode="false"
             android:textColorHint="@color/disable"
             android:drawablePadding="@dimen/_5sdp"
             android:drawableRight="@drawable/ic_baseline_search_24"
@@ -66,4 +73,4 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"/>
     </LinearLayout>
-</RelativeLayout>
+</androidx.cardview.widget.CardView>

@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+    android:textDirection="rtl"
+    android:layoutDirection="rtl"
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="50dp">
+    <TextView
+        android:layout_marginRight="@dimen/_10sdp"
+        android:layout_centerInParent="true"
+        android:layout_alignParentRight="true"
+        android:fontFamily="@font/vazir"
+        android:text="محمد جواد حجتی"
+        android:textSize="@dimen/largeFont"
+        android:id="@+id/fullName"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"/>
+    <LinearLayout
+        android:layout_alignParentLeft="true"
+        android:orientation="horizontal"
+        android:layout_width="wrap_content"
+        android:layout_height="match_parent">
+        <ImageView
+            android:background="@color/green"
+            android:id="@+id/percent"
+            android:src="@drawable/ic_baseline_check_24"
+            android:layout_width="40dp"
+            android:padding="10dp"
+            android:layout_height="match_parent"/>
+        <ImageView
+            android:src="@drawable/ic_baseline_close_24"
+            android:layout_width="40dp"
+            android:padding="10dp"
+            android:id="@+id/absent"
+            android:layout_height="match_parent"/>
+        <ImageView
+            android:id="@+id/positive"
+            android:src="@drawable/ic_baseline_exposure_plus_1_24"
+            android:layout_width="40dp"
+            android:padding="10dp"
+            android:layout_height="match_parent"/>
+        <ImageView
+            android:id="@+id/negative"
+            android:src="@drawable/ic_baseline_exposure_neg_1_24"
+            android:layout_width="40dp"
+            android:padding="10dp"
+            android:layout_height="match_parent"/>
+    </LinearLayout>
+    <View
+        android:layout_alignParentBottom="true"
+        android:background="@color/opacity"
+        android:layout_width="match_parent"
+        android:layout_height="1dp"/>
+</RelativeLayout>

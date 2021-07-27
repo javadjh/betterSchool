@@ -49,6 +49,8 @@ app.use('/api/v1',require('./route/TeacherRoute'))
 app.use('/api/v1',require('./route/ClassRoute'))
 app.use('/api/v1',require('./route/SemesterRoute'))
 app.use('/api/v1',require('./route/ClassContainerRoute'))
+app.use('/api/v1',require('./route/AttendanceRoute'))
+app.use('/api/v1',require('./route/ExamRoute'))
 
 
 

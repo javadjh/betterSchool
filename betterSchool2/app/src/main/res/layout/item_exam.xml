@@ -1,0 +1,76 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.cardview.widget.CardView app:cardCornerRadius="@dimen/softRadius"
+    app:cardElevation="@dimen/elevation"
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:id="@+id/cardExam"
+    android:layout_marginHorizontal="@dimen/_10sdp"
+    android:layout_marginVertical="@dimen/_5sdp"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+    <LinearLayout
+        android:orientation="vertical"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+        <LinearLayout
+            android:layout_marginVertical="@dimen/_5sdp"
+            android:gravity="center"
+            android:layout_gravity="center"
+            android:orientation="vertical"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+            <TextView
+                android:id="@+id/type"
+                android:layout_marginBottom="@dimen/_5sdp"
+                android:text="امتحان کلاسی"
+                android:fontFamily="@font/vazir"
+                android:layout_gravity="center"
+                android:textColor="@color/black"
+                android:gravity="center"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"/>
+            <TextView
+                android:id="@+id/startDate"
+                android:layout_marginBottom="@dimen/_5sdp"
+                android:text="تاریخ امتحان : 1400/12/10"
+                android:fontFamily="@font/vazir"
+                android:layout_gravity="center"
+                android:textColor="@color/primary"
+                android:gravity="center"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"/>
+            <TextView
+                android:id="@+id/title"
+                android:layout_marginBottom="@dimen/_5sdp"
+                android:text="عنوان : امتحان فصل دوم"
+                android:fontFamily="@font/vazir"
+                android:layout_gravity="center"
+                android:textColor="@color/black"
+                android:gravity="center"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"/>
+            <TextView
+                android:id="@+id/description"
+                android:paddingHorizontal="@dimen/_5sdp"
+                android:layout_marginBottom="@dimen/_5sdp"
+                android:text="توضیحات : امتحان از صفحه ی 216 تا 250 به همراه تمرین های کتاب"
+                android:fontFamily="@font/vazir"
+                android:layout_gravity="center"
+                android:textColor="@color/black"
+                android:gravity="center"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"/>
+        </LinearLayout>
+        <TextView
+            android:id="@+id/examStatus"
+            android:padding="@dimen/_5sdp"
+            android:textColor="@color/white"
+            android:fontFamily="@font/vazir"
+            android:gravity="center"
+            android:layout_gravity="center"
+            android:background="@color/green"
+            android:text="نمره ها وارد شده است"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"/>
+    </LinearLayout>
+</androidx.cardview.widget.CardView>

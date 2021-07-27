@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+    android:orientation="vertical"
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:textDirection="rtl"
+    android:layoutDirection="rtl"
+    tools:context=".classPackage.startClass.StartClassActivity">
+    <LinearLayout
+        android:orientation="vertical"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+        <include layout="@layout/back_layout"/>
+        <androidx.recyclerview.widget.RecyclerView
+            android:layoutDirection="rtl"
+            android:textDirection="rtl"
+            android:id="@+id/recyStudents"
+            tools:listitem="@layout/item_attendance"
+            app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"/>
+    </LinearLayout>
+    <TextView
+        android:padding="@dimen/_10sdp"
+        android:textColor="@color/white"
+        android:background="@color/green"
+        android:id="@+id/btnAttendance"
+        android:layout_alignParentBottom="true"
+        android:foregroundGravity="center"
+        android:gravity="center"
+        android:fontFamily="@font/vazir"
+        android:text="ثبت این جلسه"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"/>
+</RelativeLayout>

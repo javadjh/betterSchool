@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="55dp">
+    <TextView
+        android:textSize="@dimen/largeFont"
+        android:foregroundGravity="center"
+        android:gravity="center"
+        android:id="@+id/title"
+        android:fontFamily="@font/vazir"
+        android:text="تست متن"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"/>
+    <View
+        android:layout_alignParentBottom="true"
+        android:background="@color/opacity"
+        android:layout_width="match_parent"
+        android:layout_height="1dp"/>
+</RelativeLayout>

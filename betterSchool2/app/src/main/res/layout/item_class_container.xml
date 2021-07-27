@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.cardview.widget.CardView
+    app:cardCornerRadius="@dimen/softRadius"
+    app:cardElevation="@dimen/elevation"
+    android:layout_marginHorizontal="@dimen/_5sdp"
+    android:layout_marginVertical="@dimen/_10sdp"
+    android:id="@+id/cardClassContainer"
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+    <LinearLayout
+        android:orientation="vertical"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+        <TextView
+            android:elevation="@dimen/_10sdp"
+            android:fontFamily="@font/vazir"
+            android:id="@+id/name"
+            android:layout_gravity="center"
+            android:gravity="center"
+            android:textSize="@dimen/largeFont"
+            android:background="@color/yellow"
+            android:textColor="@color/black"
+            android:padding="@dimen/_8sdp"
+            android:text="کلاس تجربی یک"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"/>
+        <LinearLayout
+            android:background="@color/green"
+            android:orientation="vertical"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+            <TextView
+                android:padding="@dimen/_8sdp"
+                android:textColor="@color/white"
+                android:fontFamily="@font/vazir"
+                android:gravity="center"
+                android:layout_gravity="center"
+                android:id="@+id/classCount"
+                android:text="تعداد کلاس ها : 20"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"/>
+            <TextView
+                android:padding="@dimen/_8sdp"
+                android:textColor="@color/white"
+                android:id="@+id/studentsCount"
+                android:fontFamily="@font/vazir"
+                android:gravity="center"
+                android:layout_gravity="center"
+                android:text="تعداد دانش آموزان : 40"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"/>
+        </LinearLayout>
+        <TextView
+            android:elevation="@dimen/_20sdp"
+            android:padding="@dimen/_5sdp"
+            android:textColor="@color/white"
+            android:id="@+id/edit"
+            android:background="@color/yellow"
+            android:gravity="center"
+            android:layout_gravity="center"
+            android:fontFamily="@font/vazir"
+            android:text="انتقال دانش آموز"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"/>
+    </LinearLayout>
+</androidx.cardview.widget.CardView>

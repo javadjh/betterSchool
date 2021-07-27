@@ -17,3 +17,15 @@ module.exports.needSemester = (req,res,next)=>{
     console.log(req.se)
     next()
 }
+
+module.exports.teacher = async (req,res,next)=>{
+    if(!req.headers.token) return res.status(401).send({"error":"شما دسترسی به این بخش را ندارید"})
+    const isTokenValid = await jwt.verify(req.headers.token,"sdc65s4dcSDCD$(3sd1c23s5c416s5c1s61c65c3scs3csc631s6cDCSDCS")
+    if(!isTokenValid) return  res.status(401).send({"error":"شما دسترسی به این بخش را ندارید"})
+    const tokenDecoded = await jwt.decode(req.headers.token)
+    req.user = await jwt.decode(req.headers.token,{complete:true}).payload
+    if(tokenDecoded.department==="teacher")
+        next()
+    else
+        return  res.status(401).send({"error":"شما دسترسی به این بخش را ندارید"})
+}

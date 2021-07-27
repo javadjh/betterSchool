@@ -24,4 +24,13 @@
         android:text="فهرست دانش آموزان"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"/>
+    <ImageView
+        android:visibility="gone"
+        android:id="@+id/allClassExams"
+        android:src="@drawable/ic_exam"
+        android:layout_marginRight="@dimen/_10sdp"
+        android:layout_centerVertical="true"
+        android:layout_width="@dimen/_20sdp"
+        android:layout_height="@dimen/_20sdp"
+        app:tint="@color/white" />
 </RelativeLayout>

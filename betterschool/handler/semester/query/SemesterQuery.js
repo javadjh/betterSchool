@@ -1,8 +1,12 @@
 const SemesterModel = require("../../../model/SemesterModel");
+const {convertToShamsi} = require("../../../utility/dateUtility");
 module.exports.getSemester = async (req,res)=>{
     try {
-        const semesters = await SemesterModel.find().sort({name:-1})
+        let semesters = await SemesterModel.find().sort({name:-1}).lean()
         const currentSemester = semesters[0]
+        semesters.map(s=>{
+            s.createDate = convertToShamsi(s.createDate)
+        })
         res.send({
             currentSemester:currentSemester.name,
             semesters
@@ -13,5 +17,4 @@ module.exports.getSemester = async (req,res)=>{
             semesters:[]
         })
     }
-
 }

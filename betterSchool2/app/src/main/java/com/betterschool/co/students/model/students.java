@@ -9,6 +9,46 @@ public class students {
     private int grade;
     private String createDate;
 
+    //for attendance
+    private Boolean isPresent = true;
+    private Boolean hasNegativeScore = false;
+    private Boolean hasPositiveScore = false;
+
+    //for score
+    private String score;
+
+    public String getScore() {
+        return score;
+    }
+
+    public void setScore(String score) {
+        this.score = score;
+    }
+
+    public Boolean getPresent() {
+        return isPresent;
+    }
+
+    public void setPresent(Boolean present) {
+        isPresent = present;
+    }
+
+    public Boolean getHasNegativeScore() {
+        return hasNegativeScore;
+    }
+
+    public void setHasNegativeScore(Boolean hasNegativeScore) {
+        this.hasNegativeScore = hasNegativeScore;
+    }
+
+    public Boolean getHasPositiveScore() {
+        return hasPositiveScore;
+    }
+
+    public void setHasPositiveScore(Boolean hasPositiveScore) {
+        this.hasPositiveScore = hasPositiveScore;
+    }
+
     public String get_id() {
         return _id;
     }

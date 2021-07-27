@@ -1,0 +1,84 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layoutDirection="rtl"
+    android:textDirection="rtl"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".classContainer.insertClassContainer.InsertClassContainerActivity">
+    <androidx.core.widget.NestedScrollView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+        <LinearLayout
+            android:orientation="vertical"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+            <include layout="@layout/back_layout"/>
+            <LinearLayout
+                android:layout_marginTop="@dimen/_15sdp"
+                android:orientation="horizontal"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+                <EditText
+                    android:layout_gravity="center"
+                    android:drawablePadding="@dimen/_5sdp"
+                    android:drawableRight="@drawable/ic_baseline_edit_24"
+                    android:textSize="@dimen/smallFont"
+                    android:id="@+id/edtName"
+                    android:layout_marginRight="@dimen/_10sdp"
+                    android:layout_marginLeft="@dimen/_10sdp"
+                    android:fontFamily="@font/vazir"
+                    android:hint="نام ..."
+                    android:paddingVertical="@dimen/_5sdp"
+                    android:paddingHorizontal="@dimen/_10sdp"
+                    android:background="@drawable/search_style"
+                    android:layout_width="0dp"
+                    android:layout_weight="50"
+                    android:layout_height="wrap_content"/>
+                <com.jaredrummler.materialspinner.MaterialSpinner
+                    android:layout_gravity="center"
+                    android:id="@+id/gradeSpinner"
+                    android:layout_marginHorizontal="@dimen/_10sdp"
+                    android:layout_width="0dp"
+                    android:layout_weight="50"
+                    android:hint="مقطع تحصیلی"
+                    app:ms_hint="مقطع تحصیلی"
+                    android:fontFamily="@font/vazir"
+                    android:layout_height="wrap_content"/>
+            </LinearLayout>
+            <androidx.recyclerview.widget.RecyclerView
+                tools:listitem="@layout/item_student_selected"
+                android:id="@+id/recySelected"
+                app:layoutManager="androidx.recyclerview.widget.GridLayoutManager"
+                app:spanCount="3"
+                android:textDirection="rtl"
+                android:layoutDirection="rtl"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"/>
+            <androidx.recyclerview.widget.RecyclerView
+                tools:listitem="@layout/item_students"
+                android:id="@+id/recyStudents"
+                app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+                android:textDirection="rtl"
+                android:layoutDirection="rtl"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"/>
+        </LinearLayout>
+    </androidx.core.widget.NestedScrollView>
+    <TextView
+
+        android:textSize="@dimen/largeFont"
+        android:padding="@dimen/_9sdp"
+        android:textColor="@color/white"
+        android:id="@+id/insertStudent"
+        android:background="@color/green"
+        android:fontFamily="@font/vazir"
+        android:autoSizeStepGranularity="@dimen/largeFont"
+        android:gravity="center"
+        android:layout_alignParentBottom="true"
+        android:text="ثبت دانش آموز جدید"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"/>
+</RelativeLayout>

@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:textDirection="rtl"
+    android:layoutDirection="rtl"
+    android:layout_height="70dp">
+    <TextView
+        android:id="@+id/fullName"
+        android:layout_marginRight="@dimen/_10sdp"
+        android:layout_centerVertical="true"
+        android:fontFamily="@font/vazir"
+        android:text="محمد جواد حجتی"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"/>
+    <View
+        android:layout_alignParentBottom="true"
+        android:background="@color/opacity"
+        android:layout_width="match_parent"
+        android:layout_height="1dp"/>
+    <LinearLayout
+        android:layout_marginLeft="@dimen/_10sdp"
+        android:layout_centerVertical="true"
+        android:layout_alignParentLeft="true"
+        android:textDirection="rtl"
+        android:layoutDirection="rtl"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content">
+        <EditText
+            android:id="@+id/score"
+            android:inputType="numberDecimal"
+            android:paddingHorizontal="@dimen/_5sdp"
+            android:paddingVertical="@dimen/_2sdp"
+            android:fontFamily="@font/vazir"
+            android:textColor="@color/black"
+            android:background="@drawable/edt_score"
+            android:layout_gravity="center"
+            android:gravity="center"
+            android:hint="18.75"
+            android:layout_width="wrap_content"
+            android:minWidth="50dp"
+            android:layout_height="wrap_content"/>
+        <TextView
+            android:id="@+id/setScore"
+            android:layout_marginRight="@dimen/_5sdp"
+            android:paddingVertical="@dimen/_3sdp"
+            android:paddingHorizontal="@dimen/_10sdp"
+            android:background="@drawable/search_style"
+            android:fontFamily="@font/vazir"
+            android:text="ثبت نمره"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"/>
+    </LinearLayout>
+</RelativeLayout>

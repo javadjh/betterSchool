@@ -1,6 +1,8 @@
 const StudentModel = require("../../../model/StudentModel");
+const ClassContainerModel = require("../../../model/ClassContainer");
 const {convertToShamsi} = require("../../../utility/dateUtility");
 const {getStudent} = require("../../../validation/StudentValidator");
+const _ = require('lodash')
 
 module.exports.getStudents = async (req,res)=>{
     let {pageId,eachPerPage,melliCode,lastName} = req.query
@@ -21,4 +23,56 @@ module.exports.getStudents = async (req,res)=>{
         eachPerPage,
         students
     })
+}
+
+module.exports.getAllStudents = async (req,res)=>{
+    let {grade} = req.query
+    grade = parseInt(grade)
+    let students = await StudentModel.find({
+        grade
+    }).select("name lastName _id grade").lean()
+
+    let usersRegistered = await ClassContainerModel.find({
+        semesterName:req.se,
+    }).populate("students","name lastName _id grade").select("students -_id").lean()
+
+
+    let list = []
+    for (let i = 0 ; i<usersRegistered.length ; i++){
+        if(usersRegistered[i].students!=null){
+            for (let j = 0 ; j<usersRegistered[i].students.length ;j++){
+                if(usersRegistered[i].students[j].grade===grade)
+                    list.push(usersRegistered[i].students[j])
+            }
+        }
+    }
+    // console.log(students.filter(x => !list.includes(x)))
+    let resultB = students.filter(elm => !list.map(elm => JSON.stringify(elm)).includes(JSON.stringify(elm)));
+
+    console.log(resultB)
+    res.send(resultB)
+    // res.send(students)
+}
+
+function arr_diff (a1, a2) {
+
+    var a = [], diff = [];
+
+    for (var i = 0; i < a1.length; i++) {
+        a[a1[i]] = true;
+    }
+
+    for (var i = 0; i < a2.length; i++) {
+        if (a[a2[i]]) {
+            delete a[a2[i]];
+        } else {
+            a[a2[i]] = true;
+        }
+    }
+
+    for (let k in a) {
+        diff.push(k);
+    }
+
+    return diff;
 }

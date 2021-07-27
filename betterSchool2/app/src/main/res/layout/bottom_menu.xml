@@ -14,6 +14,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content">
         <LinearLayout
+            android:id="@+id/home"
             android:orientation="vertical"
             android:layout_weight="25"
             android:layout_width="0dp"
@@ -21,72 +22,88 @@
             <ImageView
                 android:layout_marginBottom="5dp"
                 app:tint="@color/primary"
+                android:id="@+id/homeIcon"
                 android:src="@drawable/ic_baseline_home_24"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"/>
             <TextView
+                android:id="@+id/homeTitle"
                 android:textColor="@color/primary"
                 android:gravity="center"
                 android:layout_gravity="center"
+                android:textSize="@dimen/smallFont"
                 android:fontFamily="@font/vazir"
                 android:text="داشبورد"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"/>
         </LinearLayout>
         <LinearLayout
+            android:id="@+id/message"
             android:orientation="vertical"
             android:layout_weight="25"
             android:layout_width="0dp"
             android:layout_height="wrap_content">
             <ImageView
+                android:id="@+id/messageIcon"
                 android:layout_marginBottom="5dp"
                 android:src="@drawable/ic_baseline_message_24"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 app:tint="@color/disable" />
             <TextView
+                android:id="@+id/messageTitle"
                 android:textColor="@color/disable"
                 android:gravity="center"
                 android:layout_gravity="center"
                 android:fontFamily="@font/vazir"
                 android:text="پیام ها"
+                android:textSize="@dimen/smallFont"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"/>
         </LinearLayout>
         <LinearLayout
+            android:id="@+id/news"
             android:orientation="vertical"
             android:layout_weight="25"
             android:layout_width="0dp"
             android:layout_height="wrap_content">
             <ImageView
+                android:id="@+id/newsIcon"
                 app:tint="@color/disable"
                 android:layout_marginBottom="5dp"
                 android:src="@drawable/ic_baseline_info_24"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"/>
             <TextView
+                android:id="@+id/newsTitle"
                 android:textColor="@color/disable"
                 android:gravity="center"
                 android:layout_gravity="center"
                 android:fontFamily="@font/vazir"
                 android:text="اخبار"
+                android:textSize="@dimen/smallFont"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"/>
         </LinearLayout>
         <LinearLayout
+            android:id="@+id/classes"
             android:orientation="vertical"
             android:layout_weight="25"
             android:layout_width="0dp"
             android:layout_height="wrap_content">
             <ImageView
+                android:id="@+id/classesIcon"
                 app:tint="@color/disable"
+                android:textSize="@dimen/smallFont"
                 android:layout_marginBottom="5dp"
                 android:src="@drawable/ic_baseline_today_24"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"/>
             <TextView
+                android:id="@+id/classesTitle"
                 android:textColor="@color/disable"
                 android:gravity="center"
+                android:textSize="@dimen/smallFont"
                 android:layout_gravity="center"
                 android:fontFamily="@font/vazir"
                 android:text="برنامه هفتگی"

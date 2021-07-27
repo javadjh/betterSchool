@@ -32,9 +32,26 @@ const StudentSchema = new mongoose.Schema({
     grade:{
         required:true,
         type:Number
+    },
+
+    //for Attendance
+    isPresent:{
+        type:Boolean
+    },
+    hasNegativeScore:{
+        type:Boolean
+    },
+    hasPositiveScore:{
+        type:Boolean
+    },
+
+    //for exam
+    score:{
+        type:String
     }
 })
 
 const StudentModel = mongoose.model("student",StudentSchema)
 
 module.exports = StudentModel
+module.exports.StudentSchema = StudentSchema

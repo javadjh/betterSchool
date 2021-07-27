@@ -1,0 +1,112 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:textDirection="rtl"
+    android:layoutDirection="rtl"
+    android:layout_height="match_parent"
+    tools:context=".classContainer.classes.InsertClassActivity">
+    <LinearLayout
+        android:orientation="vertical"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+        <include layout="@layout/back_layout"/>
+        <LinearLayout
+            android:layout_marginTop="@dimen/_10sdp"
+            android:orientation="horizontal"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+            <EditText
+                android:layout_gravity="center"
+                android:drawablePadding="@dimen/_5sdp"
+                android:drawableRight="@drawable/ic_baseline_edit_24"
+                android:textSize="@dimen/smallFont"
+                android:id="@+id/edtName"
+                android:layout_marginRight="@dimen/_10sdp"
+                android:layout_marginLeft="@dimen/_5sdp"
+                android:fontFamily="@font/vazir"
+                android:hint="نام ..."
+                android:paddingVertical="@dimen/_5sdp"
+                android:paddingHorizontal="@dimen/_10sdp"
+                android:background="@drawable/search_style"
+                android:layout_width="0dp"
+                android:layout_weight="50"
+                android:layout_height="wrap_content"/>
+            <EditText
+                android:layout_gravity="center"
+                android:drawablePadding="@dimen/_5sdp"
+                android:drawableRight="@drawable/ic_baseline_edit_24"
+                android:textSize="@dimen/smallFont"
+                android:id="@+id/edtTimeStart"
+                android:layout_marginRight="@dimen/_5sdp"
+                android:layout_marginLeft="@dimen/_10sdp"
+                android:fontFamily="@font/vazir"
+                android:hint="ساعت شروع"
+                android:paddingVertical="@dimen/_5sdp"
+                android:paddingHorizontal="@dimen/_10sdp"
+                android:background="@drawable/search_style"
+                android:layout_width="0dp"
+                android:layout_weight="50"
+                android:layout_height="wrap_content"/>
+        </LinearLayout>
+        <LinearLayout
+            android:orientation="horizontal"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+            <com.jaredrummler.materialspinner.MaterialSpinner
+                android:layoutDirection="rtl"
+                android:textDirection="rtl"
+                android:layout_weight="50"
+                android:hint="روز هفته"
+                android:id="@+id/weekDaySpinner"
+                app:ms_hint="روز هفته"
+                android:fontFamily="@font/vazir"
+                android:layout_marginTop="@dimen/_5sdp"
+                android:layout_marginHorizontal="@dimen/_10sdp"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"/>
+        </LinearLayout>
+        <androidx.cardview.widget.CardView
+            android:layout_marginTop="@dimen/_5sdp"
+            android:layout_marginHorizontal="@dimen/_10sdp"
+            app:cardCornerRadius="@dimen/softRadius"
+            app:cardElevation="@dimen/elevation"
+            app:cardBackgroundColor="@color/primary"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+            <TextView
+                android:id="@+id/teacherName"
+                android:padding="@dimen/_10sdp"
+                android:textColor="@color/white"
+                android:gravity="center"
+                android:layout_gravity="center"
+                android:fontFamily="@font/vazir"
+                android:text="معلم را انتخاب کنید"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"/>
+        </androidx.cardview.widget.CardView>
+        <androidx.recyclerview.widget.RecyclerView
+            android:textDirection="rtl"
+            android:id="@+id/recyTeachers"
+            tools:listitem="@layout/item_teachers"
+            app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+            android:layoutDirection="rtl"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"/>
+    </LinearLayout>
+    <TextView
+        android:textSize="@dimen/largeFont"
+        android:padding="@dimen/_9sdp"
+        android:textColor="@color/white"
+        android:id="@+id/insertClass"
+        android:background="@color/green"
+        android:fontFamily="@font/vazir"
+        android:autoSizeStepGranularity="@dimen/largeFont"
+        android:gravity="center"
+        android:layout_alignParentBottom="true"
+        android:text="ثبت کلاس جدید"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"/>
+</RelativeLayout>

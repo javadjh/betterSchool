@@ -7,6 +7,7 @@
     android:layout_height="wrap_content"
     xmlns:app="http://schemas.android.com/apk/res-auto">
     <androidx.cardview.widget.CardView
+        android:layout_toLeftOf="@id/indexBlock"
         android:id="@+id/informationCard"
         app:cardUseCompatPadding="true"
         app:cardCornerRadius="@dimen/softRadius"
@@ -16,21 +17,8 @@
         <RelativeLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content">
-            <TextView
-                android:layout_marginLeft="@dimen/_5sdp"
-                android:layout_alignTop="@id/informationBlock"
-                android:gravity="center"
-                android:id="@+id/indexCounter"
-                android:layout_alignBottom="@id/informationBlock"
-                android:padding="10dp"
-                android:fontFamily="@font/vazir"
-                android:textColor="@color/white"
-                android:background="@drawable/counter_style"
-                android:text="12"
-                android:layout_width="wrap_content"
-                android:layout_height="match_parent"/>
             <LinearLayout
-                android:layout_toLeftOf="@id/indexCounter"
+                android:paddingRight="@dimen/_10sdp"
                 android:id="@+id/informationBlock"
                 android:paddingBottom="@dimen/_10sdp"
                 android:paddingTop="@dimen/_10sdp"
@@ -161,5 +149,30 @@
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"/>
         </LinearLayout>
+    </androidx.cardview.widget.CardView>
+    <androidx.cardview.widget.CardView
+        app:cardUseCompatPadding="true"
+        android:layout_marginLeft="-8dp"
+        android:layout_alignBottom="@id/informationCard"
+        android:layout_alignTop="@id/informationCard"
+        android:id="@+id/indexBlock"
+        android:layout_alignParentRight="true"
+        app:cardCornerRadius="@dimen/softRadius"
+        app:cardElevation="@dimen/elevation"
+        app:cardBackgroundColor="@color/primary"
+        android:layout_width="wrap_content"
+        android:layout_height="match_parent">
+        <TextView
+            android:layout_alignTop="@id/informationBlock"
+            android:gravity="center"
+            android:id="@+id/indexCounter"
+            android:layout_alignBottom="@id/informationBlock"
+            android:padding="10dp"
+            android:fontFamily="@font/vazir"
+            android:textColor="@color/white"
+            android:background="@drawable/counter_style"
+            android:text="12"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"/>
     </androidx.cardview.widget.CardView>
 </RelativeLayout>

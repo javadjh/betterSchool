@@ -14,8 +14,12 @@ import androidx.cardview.widget.CardView;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.betterschool.co.R;
+import com.betterschool.co.classContainer.ClassContainerActivity;
+import com.betterschool.co.classPackage.TeachersClassActivity;
 import com.betterschool.co.homePage.model.modelHomePage;
+import com.betterschool.co.semesters.SemestersActivity;
 import com.betterschool.co.students.StudentsActivity;
+import com.betterschool.co.teachers.TeachersActivity;
 
 import java.util.List;
 
@@ -45,10 +49,29 @@ public class CustomAdapterHomePage extends RecyclerView.Adapter<CustomAdapterHom
         holder.card.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                Intent intent = null;
                 switch (itemHomePage.getUniqueId()){
                     case "student":
-                        Intent intent = new Intent(CustomAdapterHomePage.this.context, StudentsActivity.class);
+                        intent = new Intent(CustomAdapterHomePage.this.context, StudentsActivity.class);
                         context.startActivity(intent);
+                        break;
+                    case "teacher":
+                        intent = new Intent(CustomAdapterHomePage.this.context, TeachersActivity.class);
+                        context.startActivity(intent);
+                        break;
+                    case "classContainer":
+                        intent = new Intent(CustomAdapterHomePage.this.context, ClassContainerActivity.class);
+                        context.startActivity(intent);
+                        break;
+                    case "semester":
+                        intent = new Intent(CustomAdapterHomePage.this.context, SemestersActivity.class);
+                        context.startActivity(intent);
+                        break;
+                        //teachers----------------------------------------------------------------------------------------
+                    case "classManager":
+                        intent = new Intent(CustomAdapterHomePage.this.context, TeachersClassActivity.class);
+                        context.startActivity(intent);
+                        break;
                 }
             }
         });

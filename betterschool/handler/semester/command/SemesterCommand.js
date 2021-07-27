@@ -1,4 +1,5 @@
 const SemesterModel = require("../../../model/SemesterModel");
+const StudentModel = require("../../../model/StudentModel");
 module.exports.insertSemester= async (req,res)=>{
     let allSemester = await SemesterModel.find().sort({ name : -1}).lean()
     let newSemester
@@ -12,7 +13,11 @@ module.exports.insertSemester= async (req,res)=>{
         })
     }
 
+    let levelUpStudents = await StudentModel.find().lean()
+    levelUpStudents.map(l=> l.grade = l.grade + 1)
+    console.log(levelUpStudents)
+    await levelUpStudents.save
     newSemester = await newSemester.save()
-    res.send(newSemester)
+    res.send(true)
 }
 

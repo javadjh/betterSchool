@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layoutDirection="rtl"
+    android:textDirection="rtl"
+    android:layout_height="match_parent"
+    tools:context=".classContainer.ClassContainerActivity">
+    <LinearLayout
+        android:layoutDirection="rtl"
+        android:textDirection="rtl"
+        android:orientation="vertical"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+        <include layout="@layout/back_layout"/>
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/recyClassContainer"
+            app:layoutManager="androidx.recyclerview.widget.GridLayoutManager"
+            app:spanCount="2"
+            tools:listitem="@layout/item_class_container"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"/>
+    </LinearLayout>
+    <com.google.android.material.floatingactionbutton.FloatingActionButton
+        android:layout_width="wrap_content"
+        android:background="@color/green"
+        android:id="@+id/insertClassContainer"
+        app:elevation="@dimen/_10sdp"
+        android:visibility="visible"
+        app:rippleColor="@color/white"
+        android:layout_margin="@dimen/_15sdp"
+        app:backgroundTint="@color/green"
+        app:tint="@color/white"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentBottom="true"
+        android:src="@drawable/ic_baseline_add_24"
+        android:layout_height="wrap_content"/>
+</RelativeLayout>

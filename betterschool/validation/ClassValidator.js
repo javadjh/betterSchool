@@ -3,7 +3,7 @@ Joi.objectId = require('joi-objectid')(Joi)
 module.exports.insertValidator = (data)=>{
     const validator = Joi.object({
         name:Joi.string().required(),
-        teacher:Joi.objectId(),
+        teacher:Joi.objectId().required(),
         dayStart:Joi.string().required(),
         timeStart:Joi.string().required(),
         firstFinalExam:Joi.string(),

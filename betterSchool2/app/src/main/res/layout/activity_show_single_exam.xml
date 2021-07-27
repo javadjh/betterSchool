@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+    android:layoutDirection="rtl"
+    android:textDirection="rtl"
+    android:orientation="vertical"
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".classPackage.mainPageClass.showSingleExam.ShowSingleExamActivity">
+    <LinearLayout
+        android:layout_alignParentTop="true"
+        android:layout_above="@id/setScoreBtn"
+        android:orientation="vertical"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+        <include layout="@layout/back_layout"/>
+        <androidx.recyclerview.widget.RecyclerView
+            android:layoutDirection="rtl"
+            android:textDirection="rtl"
+            android:id="@+id/recyStudents"
+            app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+            tools:listitem="@layout/item_set_score_student"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"/>
+    </LinearLayout>
+    <TextView
+        android:textSize="@dimen/largeFont"
+        android:padding="@dimen/_9sdp"
+        android:textColor="@color/white"
+        android:id="@+id/setScoreBtn"
+        android:background="@color/green"
+        android:fontFamily="@font/vazir"
+        android:autoSizeStepGranularity="@dimen/largeFont"
+        android:gravity="center"
+        android:layout_alignParentBottom="true"
+        android:text="ثبت نمرات کلاس"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"/>
+</RelativeLayout>

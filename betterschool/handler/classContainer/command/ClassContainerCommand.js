@@ -12,7 +12,7 @@ module.exports.insertClassContainer = async (req,res)=>{
     })
     if(!newClassContainer) return res.status(400).send({"error":"خطا در ثبت کلاس اصلی رخ داده است"})
     newClassContainer = await newClassContainer.save()
-    res.send(newClassContainer)
+    res.send(true)
 }
 
 module.exports.updateClassContainer = async (req,res)=>{
@@ -28,3 +28,29 @@ module.exports.updateClassContainer = async (req,res)=>{
     res.send(updateClassContainer)
 }
 
+module.exports.moveStudent= async (req,res)=>{
+    try {
+        let {id,studentId,classContainer} = req.body
+        let hasStudent = await ClassContainerModel.findOne({
+            _id: id,
+            students:studentId
+
+        })
+        if(!hasStudent) return res.status(400).send({"error":"کاربر یافت نشد"})
+        let studentsMoved = await ClassContainerModel.findOne({_id: id})
+        studentsMoved.students = studentsMoved.students.filter(s => s._id!=studentId)
+
+        let insertStudent = await ClassContainerModel.findOne({
+            _id:classContainer
+        })
+        insertStudent.students.push(studentId)
+
+        await studentsMoved.save()
+        await insertStudent.save()
+
+        res.send(true)
+    }catch (err){
+        console.log(err)
+    }
+
+}

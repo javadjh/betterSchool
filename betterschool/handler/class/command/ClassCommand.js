@@ -22,10 +22,7 @@ module.exports.insertClass = async (req,res)=>{
     setNewClassToClassContainer.classes.push(newClass._id)
     setNewClassToClassContainer = await setNewClassToClassContainer.save()
 
-    res.send({
-        classContainer:newClass,
-        setNewClassToClassContainer
-    })
+    res.send(true)
 }
 
 module.exports.deleteClass = async (req,res)=>{
@@ -33,5 +30,20 @@ module.exports.deleteClass = async (req,res)=>{
         _id:req.params.id
     })
     if(!deletedClass) return res.status(400).send({"error":"کلاس یافت نشد"})
+    res.send(true)
+}
+
+module.exports.setClassExam = async (req,res)=>{
+    let {firstExam,secondExam,firstFinalExam,secondFinalExam,id} = req.body
+    let classUpdated = await ClassModel.findOneAndUpdate({
+        _id:id
+    },{
+        $set:{
+            firstExam,
+            firstFinalExam,
+            secondExam,
+            secondFinalExam
+        }
+    })
     res.send(true)
 }

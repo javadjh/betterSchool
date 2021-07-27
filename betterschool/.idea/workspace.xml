@@ -7,24 +7,33 @@
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
     <option name="LAST_RESOLUTION" value="IGNORE" />
   </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="HTML File" />
+      </list>
+    </option>
+  </component>
   <component name="ProjectId" id="1vcLBqet2zH9ykvJgz5rVJj0mR2" />
   <component name="ProjectViewState">
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
   <component name="PropertiesComponent">
+    <property name="DefaultHtmlFileTemplate" value="HTML File" />
     <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="javascript.nodejs.core.library.configured.version" value="12.19.0" />
     <property name="javascript.nodejs.core.library.typings.version" value="12.19.0" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/utility" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/handler/classContainer/query" />
     <property name="nodejs_interpreter_path" value="node" />
     <property name="nodejs_package_manager_path" value="npm" />
     <property name="vue.rearranger.settings.migration" value="true" />
   </component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="D:\project\betterschool\handler\classContainer\query" />
       <recent name="D:\project\betterschool\utility" />
       <recent name="D:\project\betterschool" />
     </key>
@@ -40,7 +49,18 @@
       <workItem from="1626856298538" duration="16868000" />
       <workItem from="1626939861795" duration="12363000" />
       <workItem from="1626967141471" duration="6206000" />
-      <workItem from="1627040379549" duration="2174000" />
+      <workItem from="1627040379549" duration="2915000" />
+      <workItem from="1627075138561" duration="1404000" />
+      <workItem from="1627109229802" duration="7757000" />
+      <workItem from="1627149302905" duration="3546000" />
+      <workItem from="1627154003882" duration="2082000" />
+      <workItem from="1627157848548" duration="3074000" />
+      <workItem from="1627194489548" duration="2482000" />
+      <workItem from="1627203743337" duration="14476000" />
+      <workItem from="1627282136189" duration="8412000" />
+      <workItem from="1627319580479" duration="4347000" />
+      <workItem from="1627368724787" duration="9631000" />
+      <workItem from="1627397300247" duration="2612000" />
     </task>
     <servers />
   </component>

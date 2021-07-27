@@ -41,7 +41,8 @@ const ClassSchema = new mongoose.Schema({
     },
     classContainer:{
         type:mongoose.Types.ObjectId,
-        required:true
+        required:true,
+        ref:"classContainer"
     }
 })
 
