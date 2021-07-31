@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_marginHorizontal="@dimen/_10sdp"
+    android:layout_marginVertical="@dimen/_20sdp"
+    app:cardCornerRadius="@dimen/softRadius"
+    app:cardElevation="@dimen/elevation">
+    <LinearLayout
+        android:orientation="vertical"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+        <LinearLayout
+            android:layout_marginHorizontal="@dimen/_15sdp"
+            android:orientation="vertical"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+            <TextView
+                android:textColor="@color/primary"
+                android:padding="@dimen/_10sdp"
+                android:fontFamily="@font/vazir"
+                android:gravity="center"
+                android:layout_gravity="center"
+                android:text="نمایش جزئیات پیام"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"/>
+            <TextView
+                android:paddingVertical="@dimen/_8sdp"
+                android:textColor="@color/black"
+                android:fontFamily="@font/vazir"
+                android:id="@+id/titleDetail"
+                android:text="عنوان : عنوان در این قسمت نوشته میشود"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"/>
+            <TextView
+                android:id="@+id/description"
+                android:fontFamily="@font/vazir"
+                android:text="توضیحات : توضیحات در این قسمت نوشته میشود توضیحات در این قسمت نوشته میشود توضیحات در این قسمت نوشته میشود توضیحات در این قسمت نوشته میشود "
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"/>
+            <TextView
+                android:id="@+id/sender"
+                android:paddingVertical="@dimen/_8sdp"
+                android:textColor="@color/green"
+                android:fontFamily="@font/vazir"
+                android:text="فرستنده : محمد جواد حجتی"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"/>
+
+            <TextView
+                android:gravity="left"
+                android:layout_gravity="left"
+                android:id="@+id/createDateDetail"
+                android:paddingVertical="@dimen/_8sdp"
+                android:textColor="@color/opacity"
+                android:fontFamily="@font/vazir"
+                android:text="تاریخ ارسال : 1400-02-05"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"/>
+        </LinearLayout>
+        <TextView
+            android:background="@color/primary"
+            android:layout_gravity="center"
+            android:gravity="center"
+            android:id="@+id/closeDialog"
+            android:fontFamily="@font/vazir"
+            android:textSize="@dimen/largeFont"
+            android:textColor="@color/white"
+            android:padding="@dimen/_5sdp"
+            android:text="بستن"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"/>
+    </LinearLayout>
+</androidx.cardview.widget.CardView>

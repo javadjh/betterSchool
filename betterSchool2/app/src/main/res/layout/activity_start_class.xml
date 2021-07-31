@@ -8,7 +8,7 @@
     android:layout_height="match_parent"
     android:textDirection="rtl"
     android:layoutDirection="rtl"
-    tools:context=".classPackage.startClass.StartClassActivity">
+    tools:context=".teacherClassPackage.startClass.StartClassActivity">
     <LinearLayout
         android:orientation="vertical"
         android:layout_width="match_parent"

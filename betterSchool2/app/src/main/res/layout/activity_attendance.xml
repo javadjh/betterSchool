@@ -8,7 +8,7 @@
     android:layoutDirection="rtl"
     android:textDirection="rtl"
     android:layout_height="match_parent"
-    tools:context=".classPackage.attendance.AttendanceActivity">
+    tools:context=".teacherClassPackage.attendance.AttendanceActivity">
     <include layout="@layout/back_layout"/>
     <androidx.recyclerview.widget.RecyclerView
         android:textDirection="rtl"

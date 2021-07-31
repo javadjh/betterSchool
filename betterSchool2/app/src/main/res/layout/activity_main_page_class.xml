@@ -8,7 +8,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".classPackage.mainPageClass.MainPageClassActivity">
+    tools:context=".teacherClassPackage.mainPageClass.MainPageClassActivity">
     <include layout="@layout/back_layout"/>
     <androidx.core.widget.NestedScrollView
         android:layout_width="match_parent"
@@ -20,12 +20,13 @@
             <androidx.cardview.widget.CardView
                 app:cardBackgroundColor="@color/primary"
                 app:cardUseCompatPadding="true"
-                android:id="@+id/exam"
+                app:cardElevation="@dimen/elevation"
                 android:layout_width="match_parent"
-                android:layout_marginHorizontal="@dimen/_10sdp"
                 app:cardCornerRadius="@dimen/softRadius"
                 android:layout_height="wrap_content">
                 <RelativeLayout
+                    android:id="@+id/exam"
+                    android:onClick="btnAction"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content">
                     <TextView
@@ -48,14 +49,16 @@
                 </RelativeLayout>
             </androidx.cardview.widget.CardView>
             <androidx.cardview.widget.CardView
-                android:id="@+id/startNewClass"
                 app:cardBackgroundColor="@color/red"
+                android:layout_marginTop="-10dp"
+                app:cardElevation="@dimen/elevation"
                 app:cardUseCompatPadding="true"
                 android:layout_width="match_parent"
-                android:layout_marginHorizontal="@dimen/_10sdp"
                 app:cardCornerRadius="@dimen/softRadius"
                 android:layout_height="wrap_content">
                 <RelativeLayout
+                    android:id="@+id/startNewClass"
+                    android:onClick="btnAction"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content">
                     <TextView
@@ -81,10 +84,13 @@
                 app:cardBackgroundColor="@color/green"
                 app:cardUseCompatPadding="true"
                 android:layout_width="match_parent"
-                android:layout_marginHorizontal="@dimen/_10sdp"
+                app:cardElevation="@dimen/elevation"
+                android:layout_marginTop="-10dp"
                 app:cardCornerRadius="@dimen/softRadius"
                 android:layout_height="wrap_content">
                 <RelativeLayout
+                    android:id="@+id/note"
+                    android:onClick="btnAction"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content">
                     <TextView
@@ -109,12 +115,14 @@
             <androidx.cardview.widget.CardView
                 app:cardBackgroundColor="@color/black"
                 app:cardUseCompatPadding="true"
-                android:id="@+id/attendance"
                 android:layout_width="match_parent"
-                android:layout_marginHorizontal="@dimen/_10sdp"
+                app:cardElevation="@dimen/elevation"
+                android:layout_marginTop="-10dp"
                 app:cardCornerRadius="@dimen/softRadius"
                 android:layout_height="wrap_content">
                 <RelativeLayout
+                    android:id="@+id/attendance"
+                    android:onClick="btnAction"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content">
                     <TextView
@@ -124,6 +132,38 @@
                         android:layout_gravity="center"
                         android:fontFamily="@font/vazir"
                         android:text="نمایش دفتر کلاسی"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"/>
+                    <ImageView
+                        android:layout_marginRight="@dimen/_10sdp"
+                        android:layout_alignParentRight="true"
+                        android:layout_centerVertical="true"
+                        android:src="@drawable/ic_news"
+                        android:layout_width="@dimen/_20sdp"
+                        android:layout_height="@dimen/_20sdp"
+                        app:tint="@color/white" />
+                </RelativeLayout>
+            </androidx.cardview.widget.CardView>
+            <androidx.cardview.widget.CardView
+                app:cardBackgroundColor="@color/or"
+                app:cardUseCompatPadding="true"
+                android:layout_width="match_parent"
+                app:cardElevation="@dimen/elevation"
+                android:layout_marginTop="-10dp"
+                app:cardCornerRadius="@dimen/softRadius"
+                android:layout_height="wrap_content">
+                <RelativeLayout
+                    android:id="@+id/teachersFile"
+                    android:onClick="btnAction"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content">
+                    <TextView
+                        android:padding="@dimen/_10sdp"
+                        android:textColor="@color/white"
+                        android:gravity="center"
+                        android:layout_gravity="center"
+                        android:fontFamily="@font/vazir"
+                        android:text="فایل های این کلاس"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"/>
                     <ImageView

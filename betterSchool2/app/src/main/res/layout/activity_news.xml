@@ -5,9 +5,55 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".news.NewsActivity">
+    <LinearLayout
+        android:layout_above="@id/bottomMenu"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+        <androidx.core.widget.NestedScrollView
+            android:id="@+id/scroll"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+            <LinearLayout
+                android:orientation="vertical"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+                <androidx.recyclerview.widget.RecyclerView
+                    android:textDirection="rtl"
+                    tools:listitem="@layout/item_news"
+                    android:id="@+id/recyNews"
+                    android:layoutDirection="rtl"
+                    app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"/>
+                <com.github.ybq.android.spinkit.SpinKitView
+                    android:layout_marginBottom="@dimen/_10sdp"
+                    android:id="@+id/progress"
+                    android:visibility="visible"
+                    style="@style/SpinKitView.Large.Circle"
+                    android:layout_width="@dimen/_25sdp"
+                    android:layout_height="@dimen/_25sdp"
+                    android:layout_gravity="center"
+                    app:SpinKit_Color="@color/primary" />
+            </LinearLayout>
+        </androidx.core.widget.NestedScrollView>
+    </LinearLayout>
     <include layout="@layout/bottom_menu"
         android:layout_alignParentBottom="true"
         android:id="@+id/bottomMenu"
         android:layout_height="wrap_content"
         android:layout_width="match_parent"/>
+    <com.google.android.material.floatingactionbutton.FloatingActionButton
+        android:layout_width="wrap_content"
+        android:background="@color/green"
+        android:id="@+id/insertNews"
+        app:elevation="@dimen/_10sdp"
+        android:layout_above="@id/bottomMenu"
+        android:visibility="visible"
+        app:rippleColor="@color/white"
+        android:layout_margin="@dimen/_15sdp"
+        app:backgroundTint="@color/green"
+        app:tint="@color/white"
+        android:layout_alignParentLeft="true"
+        android:src="@drawable/ic_baseline_add_24"
+        android:layout_height="wrap_content"/>
 </RelativeLayout>

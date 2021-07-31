@@ -2,6 +2,8 @@ const HeadmasterModel = require("../model/HeadmasterModel");
 const {loginValidator} = require("../validation/LoginValidator");
 const bcrypt = require('bcrypt')
 const TeacherModel = require("../model/TeacherModel");
+const StudentModel = require("../model/StudentModel");
+const DeputyModel = require("../model/DeputyModel");
 const {genToken} = require("../utility/jwtUtility");
 module.exports.login = async (req,res)=>{
     let {melliCode,password,department} = req.body
@@ -17,7 +19,6 @@ module.exports.login = async (req,res)=>{
             melliCode
         }).lean()
         if(user && user.password==null){
-            console.log("gennnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnn")
             const salt = await bcrypt.genSalt(10)
             const passwordGenerated = await bcrypt.hash(password,salt)
             const setTeacherPassword = await TeacherModel.findOneAndUpdate({
@@ -28,6 +29,51 @@ module.exports.login = async (req,res)=>{
                 }
             })
             if(!setTeacherPassword) return res.status(400).send("خطا در ثبت پسورد")
+            return res.send(genToken({
+                name:user.name,
+                lastName:user.lastName,
+                department,
+                userId:user._id
+            }))
+        }
+    }else if(department==="student"){
+        user = await StudentModel.findOne({
+            melliCode
+        }).lean()
+        if(user && user.password==null){
+            const salt = await bcrypt.genSalt(10)
+            const passwordGenerated = await bcrypt.hash(password,salt)
+            const setStudentPassword = await StudentModel.findOneAndUpdate({
+                _id:user._id
+            },{
+                $set:{
+                    password:passwordGenerated
+                }
+            })
+            if(!setStudentPassword) return res.status(400).send("خطا در ثبت پسورد")
+            return res.send(genToken({
+                name:user.name,
+                lastName:user.lastName,
+                department,
+                userId:user._id
+            }))
+        }
+    }else if(department==="deputy"){
+
+        user = await DeputyModel.findOne({
+            melliCode
+        }).lean()
+        if(user && user.password==null){
+            const salt = await bcrypt.genSalt(10)
+            const passwordGenerated = await bcrypt.hash(password,salt)
+            const setStudentPassword = await DeputyModel.findOneAndUpdate({
+                _id:user._id
+            },{
+                $set:{
+                    password:passwordGenerated
+                }
+            })
+            if(!setStudentPassword) return res.status(400).send("خطا در ثبت پسورد")
             return res.send(genToken({
                 name:user.name,
                 lastName:user.lastName,

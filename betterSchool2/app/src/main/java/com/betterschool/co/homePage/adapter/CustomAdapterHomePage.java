@@ -15,7 +15,12 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.betterschool.co.R;
 import com.betterschool.co.classContainer.ClassContainerActivity;
-import com.betterschool.co.classPackage.TeachersClassActivity;
+import com.betterschool.co.deputyNote.DeputiesNoteActivity;
+import com.betterschool.co.deputyNote.insertDeputyNote.InsertDeputyNoteActivity;
+import com.betterschool.co.disciplineScore.DisciplineScoreActivity;
+import com.betterschool.co.studentsClassPackage.StudentsClassActivity;
+import com.betterschool.co.studentsClassPackage.exam.StudentExamActivity;
+import com.betterschool.co.teacherClassPackage.TeachersClassActivity;
 import com.betterschool.co.homePage.model.modelHomePage;
 import com.betterschool.co.semesters.SemestersActivity;
 import com.betterschool.co.students.StudentsActivity;
@@ -70,6 +75,28 @@ public class CustomAdapterHomePage extends RecyclerView.Adapter<CustomAdapterHom
                         //teachers----------------------------------------------------------------------------------------
                     case "classManager":
                         intent = new Intent(CustomAdapterHomePage.this.context, TeachersClassActivity.class);
+                        context.startActivity(intent);
+                        break;
+                    //students----------------------------------------------------------------------------------------
+                    case "studentsClass":
+                        intent = new Intent(CustomAdapterHomePage.this.context, StudentsClassActivity.class);
+                        context.startActivity(intent);
+                        break;
+                    case "studentExam":
+                        intent = new Intent(CustomAdapterHomePage.this.context, StudentExamActivity.class);
+                        context.startActivity(intent);
+                        break;
+                    //deputy
+                    case "allDeputies":
+                        intent = new Intent(CustomAdapterHomePage.this.context,DeputiesNoteActivity.class);
+                        context.startActivity(intent);
+                        break;
+                    case "insertDeputy":
+                        intent = new Intent(CustomAdapterHomePage.this.context, InsertDeputyNoteActivity.class);
+                        context.startActivity(intent);
+                        break;
+                    case "setDiscipline":
+                        intent = new Intent(CustomAdapterHomePage.this.context, DisciplineScoreActivity.class);
                         context.startActivity(intent);
                         break;
                 }

@@ -3,7 +3,7 @@ const {convertToShamsi} = require("../../../utility/dateUtility");
 module.exports.getAttendance = async (req,res)=>{
     let attendances = await AttendanceModel.find({
         classId:req.params.id
-    }).select("-students").lean().sort({"createDate":-1})
+    }).lean().sort({"createDate":-1})
 
     attendances.map(a=>{
         a.createDate = convertToShamsi(a.createDate)

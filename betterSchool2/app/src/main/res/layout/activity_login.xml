@@ -86,6 +86,21 @@
                 android:layout_weight="30"
                 android:layout_height="wrap_content"/>
             <RadioButton
+                android:id="@+id/deputy"
+                android:gravity="center"
+                android:padding="@dimen/_5sdp"
+                android:layout_gravity="center"
+                android:button="@android:color/transparent"
+                android:background="@drawable/radiostyle"
+                android:layout_marginLeft="@dimen/_8sdp"
+                android:textDirection="rtl"
+                android:layoutDirection="rtl"
+                android:fontFamily="@font/vazir"
+                android:text="معاون"
+                android:layout_width="0dp"
+                android:layout_weight="30"
+                android:layout_height="wrap_content"/>
+            <RadioButton
                 android:id="@+id/headmaster"
                 android:gravity="center"
                 android:padding="@dimen/_5sdp"

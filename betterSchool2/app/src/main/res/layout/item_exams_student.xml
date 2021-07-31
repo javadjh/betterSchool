@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    android:orientation="horizontal"
+    android:background="#00FFFFFF"
+    android:layoutDirection="rtl"
+    android:textDirection="rtl"
+    android:padding="@dimen/_3sdp"
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content">
+    <TextView
+        android:ellipsize="end"
+        android:maxLines="1"
+        android:textSize="@dimen/smallFont"
+        android:textColor="@color/white"
+        android:gravity="right"
+        android:layout_gravity="right"
+        android:id="@+id/date"
+        android:fontFamily="@font/vazir"
+        android:layout_weight="50"
+        android:text="1400-05-06"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"/>
+    <TextView
+        android:ellipsize="end"
+        android:maxLines="1"
+        android:textSize="@dimen/smallFont"
+        android:textColor="@color/white"
+        android:id="@+id/name"
+        android:gravity="right"
+        android:layout_gravity="right"
+        android:fontFamily="@font/vazir"
+        android:layout_weight="50"
+        android:text="زیست شناسی دوم"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"/>
+</LinearLayout>

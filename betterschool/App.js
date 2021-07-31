@@ -11,6 +11,8 @@ require('./db/dbConfig')
 //express init and config
 const app = express()
 app.use(express.json())
+// app.use(express.static('public'));
+app.use(express.static('uploads'));
 app.use(express.urlencoded({ extended: true }));
 app.use(cors());
 app.use(function (req, res, next) {
@@ -51,6 +53,13 @@ app.use('/api/v1',require('./route/SemesterRoute'))
 app.use('/api/v1',require('./route/ClassContainerRoute'))
 app.use('/api/v1',require('./route/AttendanceRoute'))
 app.use('/api/v1',require('./route/ExamRoute'))
+app.use('/api/v1',require('./route/NoteRoute'))
+app.use('/api/v1',require('./route/LetterRoute'))
+app.use('/api/v1',require('./route/NewsRoute'))
+app.use('/api/v1',require('./route/TeacherFileRoute'))
+app.use('/api/v1',require('./route/ViolationRoute'))
+app.use('/api/v1',require('./route/DeputyNoteRoute'))
+app.use('/api/v1',require('./route/DisciplineRoute'))
 
 
 

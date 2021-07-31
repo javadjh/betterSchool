@@ -1,4 +1,6 @@
 const express = require('express')
+const {getStudentsClassContainer} = require("../handler/classContainer/query/StudentClassContainer");
+const {student} = require("../middlewares/AuthMiddleware");
 const {getClassesStudent} = require("../handler/classContainer/query/TeacherStudentQuery");
 const {teacher} = require("../middlewares/AuthMiddleware");
 const {moveStudent} = require("../handler/classContainer/command/ClassContainerCommand");
@@ -17,7 +19,8 @@ router.get('/classcontainers',[needSemester],getClassContainers)
 router.get('/classcontainer',[needSemester],getSingleClassContainers)
 router.get('/move/student/:id',[headmaster,needSemester],getMoveStudentSingle)
 router.post('/move/student',[headmaster],moveStudent)
-
+//student
+router.get('/classcontainer/student',[needSemester,student],getStudentsClassContainer)
 //teachers
 router.get("/teachers/classes/:id",[teacher],getClassesStudent)
 

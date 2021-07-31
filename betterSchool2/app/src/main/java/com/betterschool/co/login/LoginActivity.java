@@ -28,7 +28,7 @@ import retrofit2.Response;
 public class LoginActivity extends AppCompatActivity {
     EditText melliCode,password;
     RadioGroup targetRadioGroup;
-    RadioButton teacher,student,headmaster;
+    RadioButton teacher,student,headmaster,deputy;
     TextView enter;
     String department = null;
     @Override
@@ -55,6 +55,8 @@ public class LoginActivity extends AppCompatActivity {
                     department = "student";
                 }else if(headmaster.isChecked()){
                     department = "headmaster";
+                }else if(deputy.isChecked()){
+                    department = "deputy";
                 }
             }
         });
@@ -111,5 +113,6 @@ public class LoginActivity extends AppCompatActivity {
         student = findViewById(R.id.student);
         headmaster = findViewById(R.id.headmaster);
         enter = findViewById(R.id.enter);
+        deputy = findViewById(R.id.deputy);
     }
 }

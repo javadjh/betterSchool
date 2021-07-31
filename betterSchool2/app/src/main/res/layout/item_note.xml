@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.cardview.widget.CardView app:cardCornerRadius="@dimen/softRadius"
+    app:cardElevation="@dimen/elevation"
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_marginVertical="@dimen/_5sdp"
+    android:textDirection="rtl"
+    android:layoutDirection="rtl"
+    android:layout_marginHorizontal="@dimen/_10sdp"
+    android:layout_height="wrap_content"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+    <LinearLayout
+        android:orientation="vertical"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+        <TextView
+            android:id="@+id/title"
+            android:text="عنوان : عنوان تست میباشد"
+            android:fontFamily="@font/vazir"
+            android:layout_gravity="center"
+            android:gravity="center"
+            android:textColor="@color/black"
+            android:layout_marginHorizontal="@dimen/_8sdp"
+            android:padding="@dimen/_10sdp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"/>
+        <TextView
+            android:id="@+id/description"
+            android:layout_marginHorizontal="@dimen/_8sdp"
+            android:fontFamily="@font/vazir"
+            android:text="توضیحات : این یک متن تست جهت نمایش توضیحات یادداشت میباشد و معنی خاصی ندارد"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"/>
+        <TextView
+            android:id="@+id/createDate"
+            android:layout_marginBottom="@dimen/_10sdp"
+            android:layoutDirection="rtl"
+            android:textDirection="rtl"
+            android:fontFamily="@font/vazir"
+            android:layout_gravity="left"
+            android:gravity="left"
+            android:layout_marginLeft="@dimen/_8sdp"
+            android:text="1400-01-02"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"/>
+    </LinearLayout>
+</androidx.cardview.widget.CardView>

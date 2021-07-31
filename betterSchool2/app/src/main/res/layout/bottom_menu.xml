@@ -86,6 +86,7 @@
                 android:layout_height="wrap_content"/>
         </LinearLayout>
         <LinearLayout
+            android:visibility="gone"
             android:id="@+id/classes"
             android:orientation="vertical"
             android:layout_weight="25"
