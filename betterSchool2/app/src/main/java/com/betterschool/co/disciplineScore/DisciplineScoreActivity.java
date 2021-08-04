@@ -116,7 +116,15 @@ public class DisciplineScoreActivity extends AppCompatActivity {
         TextView suggestionScore = dialog.findViewById(R.id.suggestionScore);
         RecyclerView recyNotes = dialog.findViewById(R.id.recyNotes);
         TextView insertDiscipline = dialog.findViewById(R.id.insertDiscipline);
+        TextView cancelDialog = dialog.findViewById(R.id.cancelDialog);
 
+
+        cancelDialog.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                dialog.dismiss();
+            }
+        });
 
         APIInterface apiInterface = APIClient.getClient().create(APIInterface.class);
         Call<disciplineModel> call = apiInterface.getStudentsDiscipline(st.get_id());

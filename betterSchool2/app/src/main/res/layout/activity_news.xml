@@ -48,7 +48,7 @@
         android:id="@+id/insertNews"
         app:elevation="@dimen/_10sdp"
         android:layout_above="@id/bottomMenu"
-        android:visibility="visible"
+        android:visibility="gone"
         app:rippleColor="@color/white"
         android:layout_margin="@dimen/_15sdp"
         app:backgroundTint="@color/green"

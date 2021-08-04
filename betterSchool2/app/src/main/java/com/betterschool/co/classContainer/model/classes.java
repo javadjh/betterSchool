@@ -1,9 +1,11 @@
 package com.betterschool.co.classContainer.model;
 
+import com.betterschool.co.classContainer.classes.model.teacher;
+
 public class classes {
     private String _id;
     private String name;
-    private String teacher;
+    private com.betterschool.co.classContainer.classes.model.teacher teacher;
     private String semesterName;
     private String createDate;
     private int dayStart;
@@ -86,11 +88,11 @@ public class classes {
         this.name = name;
     }
 
-    public String getTeacher() {
+    public com.betterschool.co.classContainer.classes.model.teacher getTeacher() {
         return teacher;
     }
 
-    public void setTeacher(String teacher) {
+    public void setTeacher(com.betterschool.co.classContainer.classes.model.teacher teacher) {
         this.teacher = teacher;
     }
 

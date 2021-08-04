@@ -89,10 +89,14 @@ public class LoginActivity extends AppCompatActivity {
                 if(response.code()==200){
                     JWT jwt = new JWT(response.body().getToken());
                     Claim test = jwt.getClaim("department");
+                    Claim name = jwt.getClaim("name");
+                    Claim lastName = jwt.getClaim("lastName");
                     SharedPreferences sharedPreferences = getSharedPreferences("user",MODE_PRIVATE);
                     SharedPreferences.Editor editor = sharedPreferences.edit();
                     editor.putString("token",response.body().getToken());
                     editor.putString("department",test.asString());
+                    editor.putString("name",name.asString());
+                    editor.putString("lastName",lastName.asString());
                     editor.apply();
                     startActivity(new Intent(LoginActivity.this, MainActivity.class));
                 }

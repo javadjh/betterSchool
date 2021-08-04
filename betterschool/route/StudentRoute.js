@@ -1,4 +1,5 @@
 const express = require('express')
+const {getDetailSingleStudent} = require("../handler/student/query/StudentQuery");
 const {getDeputiesStudent} = require("../handler/student/query/DeputyStudentQuery");
 const {deputy} = require("../middlewares/AuthMiddleware");
 const {student} = require("../middlewares/AuthMiddleware");
@@ -17,6 +18,7 @@ route.get("/students",headmaster,getStudents)
 route.post("/insert/student",headmaster,insertStudent)
 route.delete("/student/:id",headmaster,deleteStudent)
 route.get("/allstudent",[headmaster,needSemester],getAllStudents)
+route.get("/student/detail/single",[headmaster,needSemester],getDetailSingleStudent)
 route.get("/student/detail",[teacher,needSemester],getStudentDetail)
 //student
 route.get("/student/dashboard",[student,needSemester],getStudentsStudentDetail)

@@ -4,7 +4,8 @@ module.exports.insertAttendance = async (req,res)=>{
     let newAttendance = await new AttendanceModel({
         students,
         classId,
-        classContainerId
+        classContainerId,
+        semesterName:req.se
     })
     if(!newAttendance) return res.status(400).send({"error":"ثبت حضور غیاب بات مشکل مواجعه شد"})
 

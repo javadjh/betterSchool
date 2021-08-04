@@ -10,12 +10,34 @@
     android:layout_height="match_parent"
     tools:context=".teacherClassPackage.TeachersClassActivity">
     <include layout="@layout/back_layout"/>
-    <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/recyClasses"
-        android:layoutDirection="rtl"
-        app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
-        android:textDirection="rtl"
-        tools:listitem="@layout/item_teacher_classes"
+    <androidx.core.widget.NestedScrollView
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"/>
+        android:layout_height="wrap_content">
+        <LinearLayout
+            android:orientation="vertical"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/recyClasses"
+                android:layoutDirection="rtl"
+                android:overScrollMode="never"
+                app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+                android:textDirection="rtl"
+                tools:itemCount="2"
+                tools:listitem="@layout/item_teacher_classes"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"/>
+            <androidx.recyclerview.widget.RecyclerView
+                android:layout_marginTop="@dimen/_10sdp"
+                android:id="@+id/recyOtherClass"
+                android:layoutDirection="rtl"
+                app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+                android:textDirection="rtl"
+                android:overScrollMode="never"
+                tools:itemCount="2"
+                tools:listitem="@layout/item_other_class"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"/>
+        </LinearLayout>
+    </androidx.core.widget.NestedScrollView>
 </LinearLayout>

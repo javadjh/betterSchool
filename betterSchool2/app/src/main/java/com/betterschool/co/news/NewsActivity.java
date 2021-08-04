@@ -13,6 +13,8 @@ import android.content.ContentResolver;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.content.pm.PackageManager;
+import android.graphics.Color;
+import android.graphics.drawable.ColorDrawable;
 import android.net.Uri;
 import android.os.Build;
 import android.os.Bundle;
@@ -20,6 +22,7 @@ import android.util.Log;
 import android.view.View;
 import android.view.WindowManager;
 import android.webkit.MimeTypeMap;
+import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
@@ -33,6 +36,8 @@ import com.betterschool.co.news.model.news;
 import com.betterschool.co.news.model.newsRoot;
 import com.betterschool.co.teachers.model.teachers;
 import com.betterschool.co.utilityClass.IntentBetweenActivity;
+import com.betterschool.co.utilityClass.payload;
+import com.betterschool.co.utilityClass.questionDialog;
 import com.betterschool.co.weeklySchedule.WeeklyScheduleActivity;
 import com.github.ybq.android.spinkit.SpinKitView;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
@@ -59,26 +64,72 @@ public class NewsActivity extends AppCompatActivity {
     Boolean inGettingData = false;
     List<news> list = new ArrayList<>();
     FloatingActionButton insertNews;
+    String FileType =null;
+    byte[] FileBytes = null;
+    TextView choiceFile;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_news);
         this.getWindow().setSoftInputMode(WindowManager.LayoutParams.SOFT_INPUT_STATE_ALWAYS_HIDDEN);
         findViews();
+        SharedPreferences sharedPreferences = getSharedPreferences("user",MODE_PRIVATE);
+        if(sharedPreferences.getString("department","").equals("headmaster")){
+            insertNews.setVisibility(View.VISIBLE);
+        }
         setMenu();
         getData(false);
         paging();
         insertAction();
-        enable_button();
     }
 
     private void insertAction() {
-        insertNews.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Dialog dialog = new Dialog(NewsActivity.this);
+        insertNews.setOnClickListener(v -> {
+            Dialog dialog = new Dialog(NewsActivity.this);
+            dialog.setContentView(R.layout.dialog_insert_news);
+            WindowManager.LayoutParams lp = new WindowManager.LayoutParams();
+            lp.copyFrom(dialog.getWindow().getAttributes());
+            lp.width = WindowManager.LayoutParams.MATCH_PARENT;
+            lp.height = WindowManager.LayoutParams.MATCH_PARENT;
+            dialog.getWindow().setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
 
-            }
+            EditText edtTitle = dialog.findViewById(R.id.edtTitle);
+            EditText description = dialog.findViewById(R.id.description);
+            TextView cancelDialog = dialog.findViewById(R.id.cancelDialog);
+            TextView addNews = dialog.findViewById(R.id.addNews);
+            choiceFile = dialog.findViewById(R.id.choiceFile);
+
+            cancelDialog.setOnClickListener(v1 -> dialog.dismiss());
+
+            choiceFile.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    Intent intent = new Intent(Intent.ACTION_GET_CONTENT);
+                    intent.setType("*/*");
+                    startActivityForResult(intent,100);
+                }
+            });
+
+            addNews.setOnClickListener(v12 -> {
+                if(edtTitle.getText().toString().isEmpty()){
+                    edtTitle.setError("عنوان اجباری میباشد");
+                }else if(description.getText().toString().isEmpty()){
+                    description.setError("توضیحات اجباری میباشد");
+                }else {
+                    questionDialog.show(NewsActivity.this, "آیا از افزودن خبر مطمعن هستید؟", isChange -> {
+                        if(isChange){
+                            SendFileForUpload(FileType, FileBytes, edtTitle.getText().toString(),
+                                    description.getText().toString(), dialog);
+                        }
+                    });
+                }
+
+            });
+
+
+
+            dialog.show();
+            dialog.getWindow().setAttributes(lp);
         });
     }
 
@@ -173,7 +224,7 @@ public class NewsActivity extends AppCompatActivity {
     public void onRequestPermissionsResult(int requestCode, @NonNull String[] permissions, @NonNull int[] grantResults) {
         super.onRequestPermissionsResult(requestCode, permissions, grantResults);
         if (requestCode == 100 && (grantResults[0] == PackageManager.PERMISSION_GRANTED)) {
-            sendToUploadActivity();
+//            sendToUploadActivity();
         } else {
             if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
                 requestPermissions(new String[]{Manifest.permission.READ_EXTERNAL_STORAGE}, 100);
@@ -181,17 +232,6 @@ public class NewsActivity extends AppCompatActivity {
         }
     }
 
-    private void enable_button() {
-
-        insertNews.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Intent intent = new Intent(Intent.ACTION_GET_CONTENT);
-                intent.setType("*/*");
-                startActivityForResult(intent,100);
-            }
-        });
-    }
 
 
     @Override
@@ -206,9 +246,10 @@ public class NewsActivity extends AppCompatActivity {
 
                     f.getName();
 //                    String cuid = new Cuid(this).createCuid();
-                    Log.i("rrrrtrt",f.toString());
+                    FileType = "scsdcsdsd" +"."+type;
+                    FileBytes = getBytes(inputStream);
+                    choiceFile.setText("فایل انتخاب شد");
 
-                    SendFileForUpload("scsdcsdsd" +"."+type, getBytes(inputStream));
                 } catch (Exception e) {
                     e.printStackTrace();
                 }
@@ -219,20 +260,31 @@ public class NewsActivity extends AppCompatActivity {
     }
 
 
-    private void SendFileForUpload(String type ,byte[] bytes) {
-        APIInterface apiInterface = APIClient.getClient().create(APIInterface.class);
-        RequestBody requestFile = RequestBody.create(MediaType.parse("*/*"),bytes);
+    private void SendFileForUpload(String type ,byte[] bytes,String textTitle, String textDescription,Dialog dialog) {
 
-        MultipartBody.Part file  = MultipartBody.Part.createFormData("imageUrl", type , requestFile);
-        RequestBody title = RequestBody.create(MediaType.parse("text/plain"),
-                "scsdcsdsdscsdcsd");
-        RequestBody description = RequestBody.create(MediaType.parse("text/plain"),
-                "descriptiondescriptiondescriptiondescriptiondescription");
+        RequestBody requestFile = null;
+        MultipartBody.Part file = null;
+
+        APIInterface apiInterface = APIClient.getClient().create(APIInterface.class);
+        try {
+            requestFile = RequestBody.create(MediaType.parse("*/*"),bytes);
+            file  = MultipartBody.Part.createFormData("imageUrl", type , requestFile);
+        }catch (Exception ignored){
+
+        }
+
+
+        RequestBody title = RequestBody.create(textTitle,MediaType.parse("text/plain"));
+        RequestBody description = RequestBody.create(textDescription,MediaType.parse("text/plain"));
 
         Call<Boolean> call = apiInterface.insertNews(file,title,description);
         call.enqueue(new Callback<Boolean>() {
             @Override
             public void onResponse(Call<Boolean> call, Response<Boolean> response) {
+                if(response.code()==200){
+                    dialog.dismiss();
+                    getData(false);
+                }
             }
 
             @Override
@@ -262,12 +314,5 @@ public class NewsActivity extends AppCompatActivity {
         MimeTypeMap mime = MimeTypeMap.getSingleton();
         return mime.getExtensionFromMimeType(cr.getType(uri));
     }
-    private void sendToUploadActivity() {
-        insertNews.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                enable_button();
-            }
-        });
-    }
+
 }

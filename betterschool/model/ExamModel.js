@@ -36,6 +36,10 @@ const ExamSchema = new mongoose.Schema({
         type:String,
         enum:["class","firstFinalExam","firstExam","secondFinalExam","secondExam"],
         required:true
+    },
+    semesterName:{
+        type:Number,
+        required:true
     }
 })
 

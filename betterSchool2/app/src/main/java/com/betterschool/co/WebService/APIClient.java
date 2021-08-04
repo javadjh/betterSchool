@@ -3,13 +3,22 @@ package com.betterschool.co.WebService;
 
 import android.content.Context;
 import android.content.SharedPreferences;
+import android.util.Log;
+import android.widget.Toast;
 
+import com.betterschool.co.utilityClass.ErrorModel;
 import com.betterschool.co.utilityClass.MyApplication;
+import com.google.gson.Gson;
 
+import org.jetbrains.annotations.NotNull;
+
+import java.io.IOException;
 import java.util.concurrent.TimeUnit;
 
+import okhttp3.Interceptor;
 import okhttp3.OkHttpClient;
 import okhttp3.Request;
+import okhttp3.Response;
 import okhttp3.logging.HttpLoggingInterceptor;
 import retrofit2.Retrofit;
 import retrofit2.converter.gson.GsonConverterFactory;
@@ -37,6 +46,21 @@ public class APIClient  {
                 .readTimeout(30, TimeUnit.SECONDS)
                 .writeTimeout(15, TimeUnit.SECONDS)
                 .addInterceptor(interceptor)
+                /*.addInterceptor(new Interceptor() {
+                    @NotNull
+                    @Override
+                    public Response intercept(@NotNull Chain chain) throws IOException {
+                        Request request = chain.request();
+                        Response response = chain.proceed(request);
+
+                        if (response.code() != 200) {
+                            //Log.i("sdcsdcsdcsdcsd",)
+                            return response;
+                        }
+
+                        return response;
+                    }
+                })*/
                 .build();
 
         if(retrofit == null){

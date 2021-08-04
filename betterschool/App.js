@@ -60,6 +60,7 @@ app.use('/api/v1',require('./route/TeacherFileRoute'))
 app.use('/api/v1',require('./route/ViolationRoute'))
 app.use('/api/v1',require('./route/DeputyNoteRoute'))
 app.use('/api/v1',require('./route/DisciplineRoute'))
+app.use('/api/v1',require('./route/OtherClassRoute'))
 
 
 

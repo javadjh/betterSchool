@@ -33,6 +33,7 @@
                     <TextView
                         android:paddingTop="@dimen/_10sdp"
                         android:textSize="@dimen/largeFont"
+                        android:id="@+id/helloText"
                         android:textColor="@color/white"
                         android:fontFamily="@font/vazir"
                         android:text="سلام ، محمد جواد حجتی 👋"
@@ -42,6 +43,7 @@
                         android:paddingTop="@dimen/_3sdp"
                         android:paddingBottom="@dimen/_25sdp"
                         android:textSize="@dimen/smallFont"
+                        android:id="@+id/departmentTV"
                         android:textColor="@color/white"
                         android:fontFamily="@font/vazir"
                         android:text="شما یک دانش آموز هستید"

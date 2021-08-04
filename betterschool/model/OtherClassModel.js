@@ -1,0 +1,63 @@
+const mongoose = require("mongoose")
+const OtherClassSchema = new mongoose.Schema({
+    title:{
+        type:String,
+        required:true,
+        minlength:2
+    },
+    description:{
+        type:String,
+        required:true,
+        minlength:10
+    },
+    image:{
+        type:String,
+        required:true
+    },
+    minParticipant:{
+        type:Number,
+        required:true
+    },
+    maxParticipant:{
+        type:Number,
+        required:true,
+    },
+    startDate:{
+        type:Date,
+        required:true
+    },
+    endDate:{
+        type:Date,
+        required:true
+    },
+    price:{
+        type:String,
+        required:true
+    },
+    sessionsCount:{
+        type:Number,
+        required:true
+    },
+    studentsId:{
+        type:[mongoose.Types.ObjectId],
+        ref:"student"
+    },
+    semesterName:{
+        type:Number,
+        required:true
+    },
+    teacher:{
+        type:mongoose.Types.ObjectId,
+        ref:"teacher",
+        required:true
+    },
+    timeStart:{
+        type:String,
+    },
+    grade:{
+        type:Number,
+        required:true
+    }
+})
+const OtherClassModel = mongoose.model("otherClass",OtherClassSchema)
+module.exports = OtherClassModel

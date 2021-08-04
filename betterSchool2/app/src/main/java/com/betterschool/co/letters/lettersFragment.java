@@ -16,6 +16,7 @@ import com.betterschool.co.WebService.APIClient;
 import com.betterschool.co.WebService.APIInterface;
 import com.betterschool.co.letters.adapter.CustomAdapterLetter;
 import com.betterschool.co.letters.model.letters;
+import com.betterschool.co.letters.model.lettersModel;
 
 import org.jetbrains.annotations.NotNull;
 
@@ -49,15 +50,17 @@ public class lettersFragment extends Fragment {
 
     private void getData() {
         APIInterface apiInterface = APIClient.getClient().create(APIInterface.class);
-        Call<List<letters>> call = apiInterface.getTeachersLetter(type);
-        call.enqueue(new Callback<List<letters>>() {
+        Call<List<lettersModel>> call = apiInterface.getLetters(type);
+        call.enqueue(new Callback<List<lettersModel>>() {
             @Override
-            public void onResponse(Call<List<letters>> call, Response<List<letters>> response) {
-                recyLetters.setAdapter(new CustomAdapterLetter(response.body(),getContext()));
+            public void onResponse(Call<List<lettersModel>> call, Response<List<lettersModel>> response) {
+                if(response.code()==200) {
+                    recyLetters.setAdapter(new CustomAdapterLetter(response.body(), getContext()));
+                }
             }
 
             @Override
-            public void onFailure(Call<List<letters>> call, Throwable t) {
+            public void onFailure(Call<List<lettersModel>> call, Throwable t) {
 
             }
         });

@@ -53,3 +53,24 @@ module.exports.deputy = async (req,res,next)=>{
     else
         return  res.status(401).send({"error":"شما دسترسی به این بخش را ندارید"})
 }
+
+module.exports.headmasterAndTeacher = async (req,res,next)=>{
+    if(!req.headers.token) return res.status(401).send({"error":"شما دسترسی به این بخش را ندارید"})
+    const isTokenValid = await jwt.verify(req.headers.token,"sdc65s4dcSDCD$(3sd1c23s5c416s5c1s61c65c3scs3csc631s6cDCSDCS")
+    if(!isTokenValid) return  res.status(401).send({"error":"شما دسترسی به این بخش را ندارید"})
+    const tokenDecoded = await jwt.decode(req.headers.token)
+    req.user = await jwt.decode(req.headers.token,{complete:true}).payload
+    if(tokenDecoded.department==="headmaster" || tokenDecoded.department==="teacher")
+        next()
+    else
+        return  res.status(401).send({"error":"شما دسترسی به این بخش را ندارید"})
+}
+
+module.exports.justSetUser = async (req,res,next)=>{
+    if(!req.headers.token) return res.status(401).send({"error":"شما دسترسی به این بخش را ندارید"})
+    const isTokenValid = await jwt.verify(req.headers.token,"sdc65s4dcSDCD$(3sd1c23s5c416s5c1s61c65c3scs3csc631s6cDCSDCS")
+    if(!isTokenValid) return  res.status(401).send({"error":"شما دسترسی به این بخش را ندارید"})
+    const tokenDecoded = await jwt.decode(req.headers.token)
+    req.user = await jwt.decode(req.headers.token,{complete:true}).payload
+    next()
+}

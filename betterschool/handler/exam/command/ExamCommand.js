@@ -12,7 +12,8 @@ module.exports.insertExam = async (req,res)=>{
         students,
         classId,
         classContainerId,
-        type
+        type,
+        semesterName:req.se
     })
     await newExam.save()
     res.send(true)

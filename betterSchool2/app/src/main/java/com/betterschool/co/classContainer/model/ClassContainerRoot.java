@@ -1,19 +1,21 @@
 package com.betterschool.co.classContainer.model;
 
+import com.betterschool.co.students.detailSingleStudent.model.classesString;
+
 import java.util.List;
 
 public class ClassContainerRoot {
-    private List<classes> classes;
+    private List<classesString> classes;
     private List<String> students;
     private String _id;
     private String name;
     private String semesterName;
 
-    public List<com.betterschool.co.classContainer.model.classes> getClasses() {
+    public List<classesString> getClasses() {
         return classes;
     }
 
-    public void setClasses(List<com.betterschool.co.classContainer.model.classes> classes) {
+    public void setClasses(List<classesString> classes) {
         this.classes = classes;
     }
 

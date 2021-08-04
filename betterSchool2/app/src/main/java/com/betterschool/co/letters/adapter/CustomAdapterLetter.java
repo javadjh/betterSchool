@@ -21,6 +21,7 @@ import com.betterschool.co.R;
 import com.betterschool.co.WebService.APIClient;
 import com.betterschool.co.WebService.APIInterface;
 import com.betterschool.co.letters.model.letters;
+import com.betterschool.co.letters.model.lettersModel;
 
 import org.jetbrains.annotations.NotNull;
 
@@ -31,10 +32,10 @@ import retrofit2.Callback;
 import retrofit2.Response;
 
 public class CustomAdapterLetter extends RecyclerView.Adapter<CustomAdapterLetter.viewHolderLetter> {
-    List<letters> list;
+    List<lettersModel> list;
     Context context;
 
-    public CustomAdapterLetter(List<letters> list, Context context) {
+    public CustomAdapterLetter(List<lettersModel> list, Context context) {
         this.list = list;
         this.context = context;
     }
@@ -48,61 +49,57 @@ public class CustomAdapterLetter extends RecyclerView.Adapter<CustomAdapterLette
     @SuppressLint("SetTextI18n")
     @Override
     public void onBindViewHolder(@NonNull viewHolderLetter holder, int position) {
-        letters item = list.get(position);
+        lettersModel item = list.get(position);
         holder.title.setText( "عنوان نامه : " + item.getTitle());
+        if(item.getSeen()){
+            holder.title.setTextColor(context.getResources().getColor(R.color.black));
+        }else{
+            holder.title.setTextColor(context.getResources().getColor(R.color.primary));
+        }
         holder.description.setText("توضیحات : " + item.getDescription());
         holder.createDate.setText("تاریخ ساخت : " + item.getCreateDate());
-        holder.letterCard.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                SharedPreferences sharedPreferences = context.getSharedPreferences("user",Context.MODE_PRIVATE);
-                Call<letters> call = null;
-                APIInterface apiInterface = APIClient.getClient().create(APIInterface.class);
-                if(sharedPreferences.getString("department","").equals("teacher")){
-                    call = apiInterface.getSingleTeachersLetter(item.get_id());
+        holder.letterCard.setOnClickListener(v -> {
+            Dialog dialog = new Dialog(context);
+            dialog.setContentView(R.layout.dialog_single_letter);
+            WindowManager.LayoutParams lp = new WindowManager.LayoutParams();
+            lp.copyFrom(dialog.getWindow().getAttributes());
+            lp.width = WindowManager.LayoutParams.MATCH_PARENT;
+            lp.height = WindowManager.LayoutParams.MATCH_PARENT;
+            dialog.getWindow().setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
+
+            TextView titleDetail = dialog.findViewById(R.id.titleDetail);
+            TextView description = dialog.findViewById(R.id.description);
+            TextView sender = dialog.findViewById(R.id.sender);
+            TextView createDateDetail = dialog.findViewById(R.id.createDateDetail);
+            TextView closeDialog = dialog.findViewById(R.id.closeDialog);
+
+            APIInterface apiInterface = APIClient.getClient().create(APIInterface.class);
+            Call<lettersModel> call = apiInterface.getSingleLetter(item.get_id());
+            call.enqueue(new Callback<lettersModel>() {
+                @Override
+                public void onResponse(Call<lettersModel> call, Response<lettersModel> response) {
+                    if(response.code()==200){
+                        titleDetail.setText("عنوان : " + response.body().getTitle());
+                        description.setText("توضیحات : " + response.body().getDescription());
+                        sender.setText("فرستنده : " + response.body().getSenderInformation().getName() + " " + response.body().getSenderInformation().getLastName());
+                        createDateDetail.setText("ارسال : " + response.body().getCreateDate());
+                    }
                 }
-                call.enqueue(new Callback<letters>() {
-                    @Override
-                    public void onResponse(Call<letters> call, Response<letters> response) {
-                        if(response.code()==200){
-                            Dialog dialog = new Dialog(context);
-                            dialog.setContentView(R.layout.dialog_single_letter);
-                            WindowManager.LayoutParams lp = new WindowManager.LayoutParams();
-                            lp.copyFrom(dialog.getWindow().getAttributes());
-                            lp.width = WindowManager.LayoutParams.MATCH_PARENT;
-                            lp.height = WindowManager.LayoutParams.MATCH_PARENT;
-                            dialog.getWindow().setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
 
-                            TextView titleDetail = dialog.findViewById(R.id.titleDetail);
-                            TextView description = dialog.findViewById(R.id.description);
-                            TextView sender = dialog.findViewById(R.id.sender);
-                            TextView createDateDetail = dialog.findViewById(R.id.createDateDetail);
-                            TextView closeDialog = dialog.findViewById(R.id.closeDialog);
+                @Override
+                public void onFailure(Call<lettersModel> call, Throwable t) {
 
-                            titleDetail.setText("عنوان : " + response.body().getTitle());
-                            description.setText("توضیحات : " + response.body().getDescription());
-                            sender.setText("ارسال کننده : " + (response.body().getHeadmasterSender()==null ?"معلم : ( " + response.body().getTeacherSender().getName() + " " + response.body().getTeacherSender().getLastName() + " ) ":
-                                    "مدیریت"));
-                            createDateDetail.setText("تاریخ ارسال : " + response.body().getCreateDate());
-                            closeDialog.setOnClickListener(new View.OnClickListener() {
-                                @Override
-                                public void onClick(View v) {
-                                    dialog.dismiss();
-                                }
-                            });
+                }
+            });
+            closeDialog.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    dialog.dismiss();
+                }
+            });
 
-                            dialog.show();
-                            dialog.getWindow().setAttributes(lp);
-
-                        }
-                    }
-
-                    @Override
-                    public void onFailure(Call<letters> call, Throwable t) {
-                        Toast.makeText(context, t.toString(), Toast.LENGTH_SHORT).show();
-                    }
-                });
-            }
+            dialog.show();
+            dialog.getWindow().setAttributes(lp);
         });
     }
 

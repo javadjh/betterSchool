@@ -4,19 +4,25 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.content.ContextCompat;
 import androidx.viewpager.widget.ViewPager;
 
+import android.content.Intent;
+import android.content.SharedPreferences;
 import android.graphics.Color;
 import android.graphics.Typeface;
 import android.os.Bundle;
 import android.view.LayoutInflater;
+import android.view.View;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.betterschool.co.MainActivity;
 import com.betterschool.co.R;
 import com.betterschool.co.letters.adapter.CustomAdapterLetterViewPager;
+import com.betterschool.co.letters.insertLetter.InsertLetterActivity;
 import com.betterschool.co.news.NewsActivity;
 import com.betterschool.co.utilityClass.IntentBetweenActivity;
+import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import com.google.android.material.tabs.TabLayout;
 
 public class ShowLettersActivity extends AppCompatActivity {
@@ -25,18 +31,34 @@ public class ShowLettersActivity extends AppCompatActivity {
     private int[] tabIcons = {
             R.drawable.ic_baseline_access_time_24,
             R.drawable.ic_baseline_access_time_24,
+            R.drawable.ic_baseline_access_time_24,
     };
+    FloatingActionButton insertLetter;
+    String department;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_show_letters);
+        SharedPreferences sharedPreferences = getSharedPreferences("user",MODE_PRIVATE);
+        department = sharedPreferences.getString("department","");
         setTabLayoutData();
         setMenu();
+        insertLetter = findViewById(R.id.insertLetter);
+        Toast.makeText(this,sharedPreferences.getString("department","") , Toast.LENGTH_SHORT).show();
+        if(department.equals("teacher") || department.equals("headmaster")){
+            insertLetter.setVisibility(View.VISIBLE);
+        }
+        insertLetter.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                startActivity(new Intent(ShowLettersActivity.this, InsertLetterActivity.class));
+            }
+        });
     }
     private void setTabLayoutData() {
         tabLayoutLetter = findViewById(R.id.tabLayoutLetter);
         viewPagerLetter = findViewById(R.id.viewPagerLetter);
-        viewPagerLetter.setAdapter(new CustomAdapterLetterViewPager(getSupportFragmentManager()));
+        viewPagerLetter.setAdapter(new CustomAdapterLetterViewPager(getSupportFragmentManager(),department));
         tabLayoutLetter.setupWithViewPager(viewPagerLetter);
         tabLayoutLetter.setSelectedTabIndicatorColor(Color.rgb(250,250,250));
         for (int i = 0; i < tabLayoutLetter.getTabCount(); i++) {
@@ -51,8 +73,9 @@ public class ShowLettersActivity extends AppCompatActivity {
     }
 
     private void setupTabIcons() {
-        tabLayoutLetter.getTabAt(0).setIcon(tabIcons[0]);
+        /*tabLayoutLetter.getTabAt(0).setIcon(tabIcons[0]);
         tabLayoutLetter.getTabAt(1).setIcon(tabIcons[1]);
+        tabLayoutLetter.getTabAt(2).setIcon(tabIcons[1]);*/
     }
 
     private void setMenu() {

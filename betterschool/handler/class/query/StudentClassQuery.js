@@ -8,7 +8,7 @@ module.exports.getStudentsClass = async (req,res)=>{
 
     let classes = await ClassModel.find({
         classContainer:classContainerId._id
-    })
+    }).sort({"dayStart":1}).populate("teacher")
 
     res.send(classes)
 }

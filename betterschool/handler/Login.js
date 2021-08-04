@@ -55,7 +55,8 @@ module.exports.login = async (req,res)=>{
                 name:user.name,
                 lastName:user.lastName,
                 department,
-                userId:user._id
+                userId:user._id,
+                grade:user.grade
             }))
         }
     }else if(department==="deputy"){
@@ -87,10 +88,20 @@ module.exports.login = async (req,res)=>{
     if(!user) return res.status(400).send({"error":"نام کاربری و یا رمز عبور اشتبار میباشد"})
     const isPasswordValid = await bcrypt.compare(password,user.password)
     if(!isPasswordValid) return res.status(400).send({"error":"نام کاربری و یا رمز عبور اشتبار میباشد"})
-    res.send(genToken({
-        name:user.name,
-        lastName:user.lastName,
-        department,
-        userId:user._id
-    }))
+    if(department==="student"){
+        res.send(genToken({
+            name: user.name,
+            lastName: user.lastName,
+            department,
+            userId: user._id,
+            grade:user.grade
+        }))
+    }else {
+        res.send(genToken({
+            name: user.name,
+            lastName: user.lastName,
+            department,
+            userId: user._id
+        }))
+    }
 }

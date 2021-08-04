@@ -1,16 +1,20 @@
 const express = require('express')
-/*const {getTeacherSingleLetter} = require("../handler/letter/query/LetterQuery");
-const {getSingleLetter} = require("../handler/letter/query/LetterQuery");
-const {getTeachersLetters} = require("../handler/letter/query/LetterQuery");
-const {insertTeacherLetter} = require("../handler/letter/command/LetterCommand");
+const {justSetUser} = require("../middlewares/AuthMiddleware");
+const {getLetterSingle} = require("../handler/letter/query/TeacherAndHeadmasterLetterQuery");
+const {getUsersLetter} = require("../handler/letter/query/TeacherAndHeadmasterLetterQuery");
+const {getStudentAndTeacher} = require("../handler/letter/query/TeacherAndHeadmasterLetterQuery");
+const {headmasterAndTeacher} = require("../middlewares/AuthMiddleware");
+const {teachersInsertLetterCommand} = require("../handler/letter/command/TeacherLetterCommand");
 const {needSemester} = require("../middlewares/AuthMiddleware");
-const {teacher} = require("../middlewares/AuthMiddleware");*/
+const {teacher} = require("../middlewares/AuthMiddleware");
 const router = express.Router()
 
-//teacher
-/*router.post("/insert/letter",[teacher,needSemester] , insertTeacherLetter)
-router.get("/teachers/letter",[teacher,needSemester] , getTeachersLetters)
-router.get("/teachers/letter/:id",[teacher] , getTeacherSingleLetter)*/
+router.post('/insert/letter',[headmasterAndTeacher,needSemester],teachersInsertLetterCommand)
+//teachers and headmaster
+router.get('/students/teachers/filter',[headmasterAndTeacher,needSemester],getStudentAndTeacher)
 
+
+router.get('/letters/:filter',[justSetUser,needSemester],getUsersLetter)
+router.get('/letter/:id',justSetUser,getLetterSingle)
 
 module.exports = router

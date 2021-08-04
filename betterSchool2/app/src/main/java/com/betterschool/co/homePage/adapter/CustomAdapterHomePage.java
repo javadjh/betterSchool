@@ -18,8 +18,10 @@ import com.betterschool.co.classContainer.ClassContainerActivity;
 import com.betterschool.co.deputyNote.DeputiesNoteActivity;
 import com.betterschool.co.deputyNote.insertDeputyNote.InsertDeputyNoteActivity;
 import com.betterschool.co.disciplineScore.DisciplineScoreActivity;
+import com.betterschool.co.otherClass.OtherClassActivity;
 import com.betterschool.co.studentsClassPackage.StudentsClassActivity;
 import com.betterschool.co.studentsClassPackage.exam.StudentExamActivity;
+import com.betterschool.co.studentsClassPackage.otherClass.StudentOtherClassActivity;
 import com.betterschool.co.teacherClassPackage.TeachersClassActivity;
 import com.betterschool.co.homePage.model.modelHomePage;
 import com.betterschool.co.semesters.SemestersActivity;
@@ -72,6 +74,10 @@ public class CustomAdapterHomePage extends RecyclerView.Adapter<CustomAdapterHom
                         intent = new Intent(CustomAdapterHomePage.this.context, SemestersActivity.class);
                         context.startActivity(intent);
                         break;
+                    case "otherClass":
+                        intent = new Intent(CustomAdapterHomePage.this.context, OtherClassActivity.class);
+                        context.startActivity(intent);
+                        break;
                         //teachers----------------------------------------------------------------------------------------
                     case "classManager":
                         intent = new Intent(CustomAdapterHomePage.this.context, TeachersClassActivity.class);
@@ -84,6 +90,10 @@ public class CustomAdapterHomePage extends RecyclerView.Adapter<CustomAdapterHom
                         break;
                     case "studentExam":
                         intent = new Intent(CustomAdapterHomePage.this.context, StudentExamActivity.class);
+                        context.startActivity(intent);
+                        break;
+                    case "studentOtherClass":
+                        intent = new Intent(CustomAdapterHomePage.this.context, StudentOtherClassActivity.class);
                         context.startActivity(intent);
                         break;
                     //deputy

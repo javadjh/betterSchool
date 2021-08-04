@@ -15,7 +15,7 @@
         android:layout_height="wrap_content">
         <LinearLayout
             android:layout_alignParentTop="true"
-            android:layout_above="@id/insertDiscipline"
+            android:layout_above="@id/actionBlock"
             android:orientation="vertical"
             android:layout_width="match_parent"
             android:layout_height="wrap_content">
@@ -105,7 +105,7 @@
                 android:gravity="center"
                 android:layout_gravity="center"
                 android:fontFamily="@font/vazir"
-                android:text="نمره پیشنهادی : 18.75"
+                android:text="نمره پیشنهادی : 20"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"/>
             <androidx.recyclerview.widget.RecyclerView
@@ -119,6 +119,7 @@
                 android:layout_height="wrap_content"/>
         </LinearLayout>
         <LinearLayout
+            android:id="@+id/actionBlock"
             android:layout_alignParentBottom="true"
             android:orientation="horizontal"
             android:layout_width="match_parent"
@@ -138,19 +139,19 @@
                 android:layout_weight="50"
                 android:layout_height="wrap_content"/>
             <TextView
-                android:id="@+id/insertDiscipline"
+                android:id="@+id/cancelDialog"
                 android:textColor="@color/white"
                 android:textSize="@dimen/largeFont"
                 android:padding="@dimen/_5sdp"
-                android:background="@color/green"
+                android:background="@color/red"
                 android:layout_alignParentBottom="true"
                 android:foregroundGravity="center"
                 android:gravity="center"
                 android:fontFamily="@font/vazir"
-                android:text="ثبت اطلاعات"
+                android:text="انصراف"
                 android:layout_width="0dp"
                 android:layout_weight="50"
-                android:layout_height="wrap_content"/> 
+                android:layout_height="wrap_content"/>
         </LinearLayout>
     </RelativeLayout>
 </androidx.cardview.widget.CardView>

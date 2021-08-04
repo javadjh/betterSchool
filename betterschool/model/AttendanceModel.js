@@ -20,6 +20,10 @@ const AttendanceSchema = mongoose.Schema({
         type:mongoose.Types.ObjectId,
         ref:"classContainer",
         require:true
+    },
+    semesterName:{
+        type:Number,
+        require:true
     }
 })
 

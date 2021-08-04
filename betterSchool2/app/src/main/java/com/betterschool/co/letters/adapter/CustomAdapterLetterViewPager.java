@@ -8,22 +8,45 @@ import androidx.fragment.app.FragmentStatePagerAdapter;
 
 import com.betterschool.co.letters.lettersFragment;
 
+import org.jetbrains.annotations.NotNull;
+
 public class CustomAdapterLetterViewPager extends FragmentStatePagerAdapter {
-    public CustomAdapterLetterViewPager(@NonNull FragmentManager fm) {
+    String department;
+
+    public CustomAdapterLetterViewPager(@NonNull @NotNull FragmentManager fm, String department) {
         super(fm);
+        this.department = department;
     }
+
 
 
     @NonNull
     @Override
     public Fragment getItem(int position) {
-        switch (position) {
-            case 0:
-                //Active
-                return new lettersFragment("send");
-            case 1:
-                //deActive
-                return new lettersFragment("receive");
+        switch (department) {
+            case "headmaster":
+                if (position == 0) {
+                    return new lettersFragment("send");
+                }
+                break;
+            case "teacher":
+                switch (position) {
+                    case 0:
+                        return new lettersFragment("public");
+                    case 1:
+                        return new lettersFragment("send");
+                    case 2:
+                        return new lettersFragment("private");
+                }
+                break;
+            case "student":
+                switch (position) {
+                    case 0:
+                        return new lettersFragment("public");
+                    case 1:
+                        return new lettersFragment("private");
+                }
+                break;
         }
         return null;
     }
@@ -31,11 +54,31 @@ public class CustomAdapterLetterViewPager extends FragmentStatePagerAdapter {
     @Nullable
     @Override
     public CharSequence getPageTitle(int position) {
-        switch (position) {
-            case 0:
-                return "ارسال شده";
-            case 1:
-                return "دریافت شده";
+
+        switch (department) {
+            case "headmaster":
+                if (position == 0) {
+                    return "ارسال شده";
+                }
+                break;
+            case "teacher":
+                switch (position) {
+                    case 0:
+                        return "عمومی";
+                    case 1:
+                        return "ارسال شده";
+                    case 2:
+                        return "خصوصی";
+                }
+                break;
+            case "student":
+                switch (position) {
+                    case 0:
+                        return "عمومی";
+                    case 1:
+                        return "خصوصی";
+                }
+                break;
         }
 
         return super.getPageTitle(position);
@@ -44,7 +87,15 @@ public class CustomAdapterLetterViewPager extends FragmentStatePagerAdapter {
 
     @Override
     public int getCount() {
-        return 2;
+        switch (department){
+            case "headmaster":
+                return 1;
+            case "teacher":
+                return 3;
+            case "student":
+                return 2;
+            default:return 0;
+        }
     }
 }
 

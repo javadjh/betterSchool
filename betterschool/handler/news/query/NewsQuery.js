@@ -6,14 +6,14 @@ module.exports.getNews= async (req,res)=>{
     eachPerPage = parseInt(eachPerPage)
     let news = await NewsModel.find({
         semesterName:req.se
-    }).limit(eachPerPage).skip((pageId-1)*eachPerPage).lean()
+    }).sort({"createDate":-1}).limit(eachPerPage).skip((pageId-1)*eachPerPage).lean()
     news.map(n=>{
         n.createDate = convertToShamsi(n.createDate)
     })
     res.send({
         pageId,
         eachPerPage,
-        news 
+        news
     })
 
 }

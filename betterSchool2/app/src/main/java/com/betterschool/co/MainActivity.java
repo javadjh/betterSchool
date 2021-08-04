@@ -5,6 +5,7 @@ import androidx.cardview.widget.CardView;
 import androidx.core.content.ContextCompat;
 import androidx.recyclerview.widget.RecyclerView;
 
+import android.annotation.SuppressLint;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
@@ -29,6 +30,7 @@ public class MainActivity extends AppCompatActivity {
     RecyclerView recyOptions;
     List<modelHomePage> list = new ArrayList<>();
     CardView exitApp;
+    TextView helloText,departmentTV;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -37,19 +39,38 @@ public class MainActivity extends AppCompatActivity {
         fakeDataHomePage();
         setMenu();
         exitAction();
+        setHEaderData();
+    }
+
+    @SuppressLint("SetTextI18n")
+    private void setHEaderData() {
+        SharedPreferences sharedPreferences = getSharedPreferences("user",MODE_PRIVATE);
+        helloText.setText( "سلام، " + sharedPreferences.getString("name","") + " " + sharedPreferences.getString("lastName","نام شما ثبت نشده") );
+        switch (sharedPreferences.getString("department","")){
+            case "teacher":
+                departmentTV.setText("شما معلم هستید");
+                break;
+            case "student":
+                departmentTV.setText("شما دانش آموز هستید");
+                break;
+            case "headmaster":
+                departmentTV.setText("شما مدیر هستید");
+                break;
+            case "deputy":
+                departmentTV.setText("شما معاون هستید");
+                break;
+
+        }
     }
 
     private void exitAction() {
-        exitApp.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                SharedPreferences sharedPreferences = getSharedPreferences("user",MODE_PRIVATE);
-                SharedPreferences.Editor editor = sharedPreferences.edit();
-                editor.clear();
-                editor.apply();
-                startActivity(new Intent(MainActivity.this,LoginActivity.class));
-                finish();
-            }
+        exitApp.setOnClickListener(v -> {
+            SharedPreferences sharedPreferences = getSharedPreferences("user",MODE_PRIVATE);
+            SharedPreferences.Editor editor = sharedPreferences.edit();
+            editor.clear();
+            editor.apply();
+            startActivity(new Intent(MainActivity.this,LoginActivity.class));
+            finish();
         });
     }
 
@@ -95,6 +116,8 @@ public class MainActivity extends AppCompatActivity {
     private void findViews() {
         recyOptions = findViewById(R.id.recyOptions);
         exitApp = findViewById(R.id.exitApp);
+        helloText = findViewById(R.id.helloText);
+        departmentTV = findViewById(R.id.departmentTV);
     }
 
     private void fakeDataHomePage() {
@@ -105,6 +128,7 @@ public class MainActivity extends AppCompatActivity {
             list.add(new modelHomePage(R.drawable.ic_teacher, R.drawable.card_two, "معلم ها", "در این قسمت میتوانید معلم ها را مدیریت کنید", "teacher"));
             list.add(new modelHomePage(R.drawable.ic_resource_class, R.drawable.card_three, "کلاس ها", "در این قسمت میتوانید کلاس ها را مدیریت کنید", "classContainer"));
             list.add(new modelHomePage(R.drawable.ic_semester, R.drawable.card_four, "ثبت نیم سال", "در این قسمت میتوانید نیم سال ها را مدیریت کنید", "semester"));
+            list.add(new modelHomePage(R.drawable.ic_semester, R.drawable.card_one, "کلاس های دیگر", "در این قسمت میتوانید کلاس های فوق برنامه را مدیریت کنید", "otherClass"));
         }else if(getDepartment.equals("teacher")){
             list.add(new modelHomePage(R.drawable.ic_resource_class, R.drawable.card_one, "مدیریت کلاس ها", "در این قسمت میتوانید کلاس هایتان را مدیریت کنید", "classManager"));
 //            list.add(new modelHomePage(R.drawable.ic_todo, R.drawable.card_two, "یادداشت ها", "در این قسمت میتوانید یادداشت هایتان را مدیریت کنید", "todoList"));
@@ -112,7 +136,7 @@ public class MainActivity extends AppCompatActivity {
         }else if(getDepartment.equals("student")){
             list.add(new modelHomePage(R.drawable.ic_resource_class, R.drawable.card_one, "کلاس ها", "در این قسمت میتوانید کلاس هایتان را مدیریت کنید", "studentsClass"));
             list.add(new modelHomePage(R.drawable.ic_todo, R.drawable.card_two, "امتحان ها", "در این قسمت میتوانید امتحان های خود را مشاهده کنید", "studentExam"));
-//            list.add(new modelHomePage(R.drawable.ic_exam, R.drawable.card_three, "ارسال سوالات", "در این قسمت میتوانید سوالات امتحانی را برای معاون ارسال کنید", "sendExam"));
+            list.add(new modelHomePage(R.drawable.ic_exam, R.drawable.card_three, "کلاس های دیگر", "د این قسمت میتوانید کلاس های فوق برنامه خود را مدیریت کنید", "studentOtherClass"));
         }else if(getDepartment.equals("deputy")){
             list.add(new modelHomePage(R.drawable.ic_resource_class, R.drawable.card_one, "همه یادداشت ها", "در این قسمت میتوانید یادداشت های انضباطی ا مشاهده کنید", "allDeputies"));
             list.add(new modelHomePage(R.drawable.ic_todo, R.drawable.card_two, "ثبت یادداشت", "در این قسمت میتوانید امتحان های خود را مشاهده کنید", "insertDeputy"));

@@ -1,4 +1,20 @@
 const mongoose = require('mongoose')
+
+const UserInformation = new mongoose.Schema({
+    name:{
+        required:true,
+        type:String
+    },
+    lastName:{
+        required:true,
+        type:String
+    },
+    userId:{
+        type:mongoose.Types.ObjectId,
+        required:true
+    }
+})
+
 const LetterSchema = new mongoose.Schema({
     title:{
         type:String,
@@ -10,48 +26,22 @@ const LetterSchema = new mongoose.Schema({
         required:true,
         minlength:2
     },
-
-    typeSender:{
+    userId:{
+        type:mongoose.Types.ObjectId,
+    },
+    senderInformation:{
+        type:UserInformation,
+    },
+    receiverInformation:{
+        type:UserInformation
+    },
+    type:{
         type:String,
         required:true
     },
-
-
-    teacherSender:{
-        type:mongoose.Types.ObjectId,
-        ref:"teacher"
+    file:{
+        type:String
     },
-    headmasterSender:{
-        type:mongoose.Types.ObjectId,
-        ref:"headmaster"
-    },
-    studentSender:{
-        type:mongoose.Types.ObjectId,
-        ref:"student"
-    },
-    parentSender:{
-        type:mongoose.Types.ObjectId,
-        ref:"parent"
-    },
-
-
-    headmasterReceiver:{
-        type:Boolean,
-    },
-    teachersReceiver:{
-        type:[mongoose.Types.ObjectId],
-        ref:"teacher"
-    },
-    studentReceiver:{
-        type:[mongoose.Types.ObjectId],
-        ref:"student"
-    },
-    parentReceiver:{
-        type:[mongoose.Types.ObjectId],
-        ref:"parent"
-    },
-
-
     seen:{
         type:Boolean,
         default:false
@@ -63,7 +53,8 @@ const LetterSchema = new mongoose.Schema({
     semesterName:{
         type:Number,
         required:true
-    }
+    },
+
 })
 const LetterModel = mongoose.model("letter",LetterSchema)
 module.exports = LetterModel

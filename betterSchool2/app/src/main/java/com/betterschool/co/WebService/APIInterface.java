@@ -14,10 +14,17 @@ import com.betterschool.co.deputyNote.insertDeputyNote.model.violations;
 import com.betterschool.co.deputyNote.model.deputyNoteRoot;
 import com.betterschool.co.disciplineScore.model.disciplineModel;
 import com.betterschool.co.disciplineScore.model.insertDisciplineModel;
+import com.betterschool.co.letters.insertLetter.model.insertLetterModel;
+import com.betterschool.co.letters.insertLetter.model.studentAndTeacherModel;
 import com.betterschool.co.letters.model.letters;
+import com.betterschool.co.letters.model.lettersModel;
 import com.betterschool.co.news.model.news;
 import com.betterschool.co.news.model.newsRoot;
+import com.betterschool.co.otherClass.model.otherClasses;
+import com.betterschool.co.otherClass.singleOtherClass.singleOtherClassModel;
+import com.betterschool.co.students.detailSingleStudent.model.singleStudentDetailModel;
 import com.betterschool.co.studentsClassPackage.exam.model.studentsExam;
+import com.betterschool.co.studentsClassPackage.otherClass.model.studentOtherClassRoot;
 import com.betterschool.co.teacherClassPackage.attendance.model.attendanceRoot;
 import com.betterschool.co.teacherClassPackage.exam.model.exams;
 import com.betterschool.co.teacherClassPackage.exam.model.insertExamModel;
@@ -49,6 +56,7 @@ import retrofit2.http.DELETE;
 import retrofit2.http.GET;
 import retrofit2.http.Multipart;
 import retrofit2.http.POST;
+import retrofit2.http.PUT;
 import retrofit2.http.Part;
 import retrofit2.http.Path;
 import retrofit2.http.Query;
@@ -220,4 +228,51 @@ public interface APIInterface {
 
     @POST("insert/discipline")
     Call<Boolean> insertDiscipline (@Body insertDisciplineModel insertDisciplineModel);
+
+    @GET("other/classes/{id}")
+    Call<List<otherClasses>> getOtherClass (@Path("id") int id);
+
+    @Multipart
+    @POST("insert/other/class")
+    Call<Boolean> insertOtherClass(
+            @Part MultipartBody.Part bodyFile,
+            @Part("title") RequestBody title,
+            @Part("description") RequestBody description,
+            @Part("minParticipant") RequestBody minParticipant,
+            @Part("maxParticipant") RequestBody maxParticipant,
+            @Part("startDate") RequestBody startDate,
+            @Part("endDate") RequestBody endDate,
+            @Part("price") RequestBody price,
+            @Part("sessionsCount") RequestBody sessionsCount,
+            @Part("teacher") RequestBody teacher,
+            @Part("timeStart") RequestBody timeStart,
+            @Part("grade") RequestBody grade);
+
+    @GET("student/other/classes")
+    Call<studentOtherClassRoot> getStudentsOtherClass();
+
+    @GET("other/class/{id}")
+    Call<singleOtherClassModel> getSingleOtherClass(@Path("id") String id);
+
+    @PUT("join/other/student/{id}")
+    Call<Boolean> joinOtherClass(@Path("id") String id);
+
+    @GET("teachers/other/classes")
+    Call<List<otherClasses>> getTeachersOtherClass();
+
+    @GET("students/teachers/filter")
+    Call<studentAndTeacherModel> getStudentsAndTeachers(@Query("type") String type,
+                                                        @Query("lastName") String lastName);
+
+    @POST("insert/letter")
+    Call<Boolean> insertLetter(@Body insertLetterModel insertLetterModel);
+
+    @GET("letters/{filter}")
+    Call<List<lettersModel>> getLetters(@Path("filter") String filter);
+
+    @GET("letter/{id}")
+    Call<lettersModel> getSingleLetter(@Path("id") String id);
+
+    @GET("student/detail/single")
+    Call<singleStudentDetailModel> getSingleUserDetail(@Query("studentId") String studentId);
 }

@@ -168,9 +168,7 @@ public class TeachersFileActivity extends AppCompatActivity {
                     File f = new File("" + data.getData());
                     f.getName();
                     String cuid = "csdsdscdsdc";
-
                     StringType = cuid +"."+type;
-                    Log.i("eeeeeeeee",f.getPath());
                     choiceFile.setText("فایل انتخاب شد");
                     StringBytes = getBytes(inputStream);
 

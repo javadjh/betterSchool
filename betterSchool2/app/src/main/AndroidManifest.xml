@@ -13,7 +13,14 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.BetterSchool">
-        <activity android:name=".disciplineScore.DisciplineScoreActivity"></activity>
+        <activity android:name=".students.detailSingleStudent.SingleStudentDetailActivity"></activity>
+        <activity android:name=".letters.insertLetter.InsertLetterActivity" />
+        <activity android:name=".teacherClassPackage.otherClass.TeachersOtherClassSingle" />
+        <activity android:name=".otherClass.singleOtherClass.SingleOtherClassActivity" />
+        <activity android:name=".studentsClassPackage.otherClass.StudentOtherClassActivity" />
+        <activity android:name=".otherClass.insertOtherClass.InsertOtherClassActivity" />
+        <activity android:name=".otherClass.OtherClassActivity" />
+        <activity android:name=".disciplineScore.DisciplineScoreActivity" />
         <activity android:name=".deputyNote.insertDeputyNote.InsertDeputyNoteActivity" />
         <activity android:name=".deputyNote.DeputiesNoteActivity" />
         <activity android:name=".teacherClassPackage.teachersFile.TeachersFileActivity" />

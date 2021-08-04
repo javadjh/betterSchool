@@ -43,30 +43,31 @@ public class CustomAdapterTeachersClass extends RecyclerView.Adapter<CustomAdapt
         holder.timeStart.setText(item.getTimeStart());
         switch (item.getDayStart()){
             case 0:
-                holder.dayShower.setBackgroundColor(context.getResources().getColor(R.color.green));
+                holder.classBlock.setBackgroundColor(context.getResources().getColor(R.color.green));
                 holder.dayTitle.setText("شنبه");
                 break;
             case 1:
-                holder.dayShower.setBackgroundColor(context.getResources().getColor(R.color.or));
+                holder.classBlock.setBackgroundColor(context.getResources().getColor(R.color.or));
                 holder.dayTitle.setText("یکشنبه");
                 break;
             case 2:
-                holder.dayShower.setBackgroundColor(context.getResources().getColor(R.color.red));
-                break;
-            case 3:
-                holder.dayShower.setBackgroundColor(context.getResources().getColor(R.color.black));
+                holder.classBlock.setBackgroundColor(context.getResources().getColor(R.color.red));
                 holder.dayTitle.setText("دوشنبه");
                 break;
-            case 4:
-                holder.dayShower.setBackgroundColor(context.getResources().getColor(R.color.yellow));
+            case 3:
+                holder.classBlock.setBackgroundColor(context.getResources().getColor(R.color.black));
                 holder.dayTitle.setText("سه شنبه");
                 break;
-            case 5:
-                holder.dayShower.setBackgroundColor(context.getResources().getColor(R.color.purple_500));
+            case 4:
+                holder.classBlock.setBackgroundColor(context.getResources().getColor(R.color.yellow));
                 holder.dayTitle.setText("چهارشنبه");
                 break;
+            case 5:
+                holder.classBlock.setBackgroundColor(context.getResources().getColor(R.color.purple_500));
+                holder.dayTitle.setText("پنجشنبه");
+                break;
             case 6:
-                holder.dayShower.setBackgroundColor(context.getResources().getColor(R.color.teal_700));
+                holder.classBlock.setBackgroundColor(context.getResources().getColor(R.color.teal_700));
                 holder.dayTitle.setText("جمعه");
                 break;
         }
@@ -88,14 +89,12 @@ public class CustomAdapterTeachersClass extends RecyclerView.Adapter<CustomAdapt
 
     public static class viewHolderTeachersClass extends RecyclerView.ViewHolder {
         TextView className,timeStart,ClassContainerName,dayTitle;
-        LinearLayout dayShower;
         RelativeLayout classBlock;
         public viewHolderTeachersClass(@NonNull View itemView) {
             super(itemView);
             className = itemView.findViewById(R.id.className);
             timeStart = itemView.findViewById(R.id.timeStart);
             ClassContainerName = itemView.findViewById(R.id.ClassContainerName);
-            dayShower = itemView.findViewById(R.id.dayShower);
             dayTitle = itemView.findViewById(R.id.dayTitle);
             classBlock = itemView.findViewById(R.id.classBlock);
         }
